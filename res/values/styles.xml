@@ -16,5 +16,8 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
+    
+    <!-- Colors -->
+    <color name="main_background">#2B2B2B</color>
 
 </resources>
