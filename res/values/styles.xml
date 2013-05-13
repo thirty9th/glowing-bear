@@ -18,6 +18,7 @@
     </style>
     
     <!-- Colors -->
-    <color name="main_background">#2B2B2B</color>
+    <color name="main_background">#8D5932</color>
+    <color name="dark_grey">#2B2B2B</color>
 
 </resources>

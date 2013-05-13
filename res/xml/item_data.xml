@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<item_data>
+    
+    <!-- Wood-based items -->
+	<item name="ladder">
+	    <recipe>
+	        <ingredient name="stick" quantity="6" />
+	        <produced quantity="4" />
+	    </recipe>
+	</item>
+	<item name="stick">
+	    <recipe>
+	        <ingredient name="oak_wood_planks" quantity="2" />
+	        <produced quantity="4" />
+	    </recipe>
+	    <recipe>
+	        <ingredient name="birch_wood_planks" quantity="2" />
+	        <produced quantity="4" />
+	    </recipe>
+	    <recipe>
+	        <ingredient name="spruce_wood_planks" quantity="2" />
+	        <produced quantity="4" />
+	    </recipe>
+	</item>
+	<item name="oak_wood_planks">
+	    <recipe>
+	        <ingredient name="oak_wood" quantity="1" />
+	        <produced quantity="4" />
+	    </recipe>
+	</item>
+	<item name="birch_wood_planks">
+	    <recipe>
+	        <ingredient name="oak_wood" quantity="1" />
+	        <produced quantity="4" />
+	    </recipe>
+	</item>
+	<item name="spruce_wood_planks">
+	    <recipe>
+	        <ingredient name="oak_wood" quantity="1" />
+	        <produced quantity="4" />
+	    </recipe>
+	</item>
+	
+</item_data>
