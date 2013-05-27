@@ -38,4 +38,14 @@
 
     </LinearLayout>
 
+    <ListView
+        android1:id="@+id/list_view_test"
+        android1:layout_width="match_parent"
+        android1:layout_height="wrap_content"
+        android1:layout_above="@+id/linear_layout_search_bar_wrapper"
+        android1:layout_alignParentLeft="true"
+        android1:layout_alignParentTop="true" >
+
+    </ListView>
+
 </RelativeLayout>

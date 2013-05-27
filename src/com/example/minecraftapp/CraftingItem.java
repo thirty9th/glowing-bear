@@ -9,19 +9,20 @@
 package com.example.minecraftapp;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.List;
 
 public class CraftingItem
 {
 
 	// Member variables
-	protected String name;
-	protected ArrayList<ArrayList<HashMap<String, String>>> recipes;
+	public String name;
+	public List<Recipe> recipes;
 	
 	// Constructor
 	public CraftingItem(String inName)
 	{
 		this.name = inName;
+		this.recipes = new ArrayList<Recipe>();
 	};
 	
 };

@@ -3,41 +3,34 @@
     
     <!-- Wood-based items -->
 	<item name="ladder">
-	    <recipe>
-	        <ingredient name="stick" quantity="6" />
-	        <produced quantity="4" />
+	    <recipe produced="4">
+	        <ingredient name="stick" quantity="7" />
 	    </recipe>
 	</item>
 	<item name="stick">
-	    <recipe>
+	    <recipe produced="4">
 	        <ingredient name="oak_wood_planks" quantity="2" />
-	        <produced quantity="4" />
 	    </recipe>
-	    <recipe>
+	    <recipe produced="4">
 	        <ingredient name="birch_wood_planks" quantity="2" />
-	        <produced quantity="4" />
 	    </recipe>
-	    <recipe>
+	    <recipe produced="4">
 	        <ingredient name="spruce_wood_planks" quantity="2" />
-	        <produced quantity="4" />
 	    </recipe>
 	</item>
 	<item name="oak_wood_planks">
-	    <recipe>
+	    <recipe produced="4">
 	        <ingredient name="oak_wood" quantity="1" />
-	        <produced quantity="4" />
 	    </recipe>
 	</item>
 	<item name="birch_wood_planks">
-	    <recipe>
-	        <ingredient name="oak_wood" quantity="1" />
-	        <produced quantity="4" />
+	    <recipe produced="4">
+	        <ingredient name="birch_wood" quantity="1" />
 	    </recipe>
 	</item>
 	<item name="spruce_wood_planks">
-	    <recipe>
-	        <ingredient name="oak_wood" quantity="1" />
-	        <produced quantity="4" />
+	    <recipe produced="4">
+	        <ingredient name="spruce_wood" quantity="1" />
 	    </recipe>
 	</item>
 	
