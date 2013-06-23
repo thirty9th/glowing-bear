@@ -4,47 +4,49 @@
     android:id="@+id/relative_layout_main_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/main_background"
+    android:background="@color/white"
     tools:context=".MainActivity" >
 
-    <LinearLayout
-        android1:id="@+id/linear_layout_search_bar_wrapper"
+    <RelativeLayout
+        android1:id="@+id/relative_layout_main_titlebar"
+        android1:layout_width="match_parent"
+        android1:layout_height="wrap_content"
+        android1:background="@color/dark_grey"
+        android1:padding="@dimen/main_menu_padding" >
+
+        <TextView
+            android1:id="@+id/text_main_titlebar"
+            android1:layout_width="wrap_content"
+            android1:layout_height="wrap_content"
+            android1:layout_alignParentLeft="true"
+            android1:layout_centerVertical="true"
+            android1:text="@string/worksheets_title"
+            android1:textAppearance="?android:attr/textAppearanceLarge"
+            android1:textColor="@color/white"
+            android1:textColorHint="@color/dark_grey" />
+
+        <ImageButton
+            android1:id="@+id/button_add_worksheet"
+            android1:layout_width="25dp"
+            android1:layout_height="25dp"
+            android1:layout_alignParentRight="true"
+            android1:layout_centerVertical="true"
+            android1:background="@null"
+            android1:contentDescription="@string/button_add_worksheet_des"
+            android1:onClick="onClickAddWorksheet"
+            android1:scaleType="fitCenter"
+            android1:src="@drawable/button_add_worksheet" />
+
+    </RelativeLayout>
+
+    <ListView
+        android1:id="@+id/list_worksheets"
         android1:layout_width="match_parent"
         android1:layout_height="wrap_content"
         android1:layout_alignParentBottom="true"
         android1:layout_alignParentLeft="true"
-        android1:background="@color/dark_grey"
-        android1:minHeight="50dp"
-        android1:padding="5dp" >
-
-        <EditText
-            android1:id="@+id/text_search_bar_field"
-            android:inputType="text"
-            android1:layout_width="wrap_content"
-            android1:layout_height="wrap_content"
-            android1:layout_weight="1"
-            android1:ems="10" >
-
-            <requestFocus />
-        </EditText>
-
-        <Button
-            android1:id="@+id/button_search_bar_submit"
-            android1:layout_width="wrap_content"
-            android1:layout_height="wrap_content"
-            android1:layout_weight="1"
-            android:onClick="onClickSearch"
-            android1:text="@string/search_button" />
-
-    </LinearLayout>
-
-    <ListView
-        android1:id="@+id/list_view_test"
-        android1:layout_width="match_parent"
-        android1:layout_height="wrap_content"
-        android1:layout_above="@+id/linear_layout_search_bar_wrapper"
-        android1:layout_alignParentLeft="true"
-        android1:layout_alignParentTop="true" >
+        android1:layout_below="@+id/relative_layout_main_titlebar"
+        android1:divider="@null" >
 
     </ListView>
 

@@ -11,7 +11,6 @@ package com.example.minecraftapp;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -19,7 +18,6 @@ import org.xmlpull.v1.XmlPullParserException;
 
 import android.content.Context;
 import android.content.res.XmlResourceParser;
-import android.widget.Toast;
 
 public class ItemDataManager
 {
