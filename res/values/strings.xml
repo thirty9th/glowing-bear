@@ -8,5 +8,8 @@
     <string name="worksheets_title">Worksheets</string>
     <string name="button_add_worksheet_des">Add new worksheet</string>
     <string name="listview_item_worksheets_icon_des">Worksheet icon</string>
+    <string name="dialog_create_worksheet_prompt">Name of new worksheet</string>
+    <string name="cancel">Cancel</string>
+    <string name="create">Create</string>
 
 </resources>

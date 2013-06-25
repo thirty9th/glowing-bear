@@ -8,29 +8,31 @@
     <RelativeLayout
         android:id="@+id/RelativeLayout1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/dark_grey"
-        android:gravity="center_vertical">
+        android:layout_height="80dp"
+        android:background="@color/dark_grey" >
 
         <ImageView
             android:id="@+id/image_tab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="@dimen/main_menu_padding"
+            android:layout_marginTop="@dimen/main_menu_padding"
             android:contentDescription="@string/listview_item_worksheets_icon_des"
-            android:maxHeight="50dp"
+            android:scaleType="fitCenter"
             android:src="@drawable/icon_worksheets_tab" />
 
         <TextView
             android:id="@+id/text_worksheet_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:layout_margin="@dimen/main_menu_padding"
+            android:layout_toRightOf="@+id/image_tab"
             android:text="Placeholder"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textSize="16sp" />
 
     </RelativeLayout>
 

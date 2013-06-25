@@ -8,12 +8,13 @@
 package com.example.minecraftapp;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.DataInputStream;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -21,10 +22,16 @@ import java.util.List;
 import org.xmlpull.v1.XmlPullParserException;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.Window;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -79,14 +86,14 @@ public class MainActivity extends Activity
 		
 		// Populate the list of worksheets
 		worksheetList = new ArrayList<String>();
-		int worksheetCount = readWorksheetFile();
-		if (worksheetCount == 0) worksheetList.add("No worksheets found");
+		readWorksheetFile();
+		if (worksheetList.size() == 0) worksheetList.add("No worksheets found");
 		
 		// Now add all the worksheets to the listview for display
 		loadWorksheetListview();
 		
 		// Update count of worksheets displayed on the titlebar
-		worksheetTitleText.setText("Worksheets (" + worksheetCount + ")");
+		updateWorksheetCount();
 
 		// Test display of all items
 //		int count = 0;
@@ -102,6 +109,22 @@ public class MainActivity extends Activity
 //		}
 	}
 	
+	// Called when app is stopped
+	@Override
+	protected void onStop()
+	{
+		super.onStop();
+		writeWorksheetFile();
+	}
+	
+	// Called when app is paused
+	@Override
+	protected void onPause()
+	{
+		super.onPause();
+		writeWorksheetFile();
+	}
+	
 	// Called when the user hits submit button on search bar
 	public void onClickSearch(View v)
 	{
@@ -111,21 +134,106 @@ public class MainActivity extends Activity
 	// Called when the user hits the add worksheet button
 	public void onClickAddWorksheet(View v)
 	{
-		Toast.makeText(getBaseContext(), "Clicked add worksheet.", Toast.LENGTH_SHORT).show();
+		// Set up and show a new alert dialog
+		AlertDialog.Builder b = new AlertDialog.Builder(this);
+		final EditText nameBox = new EditText(this);
+		nameBox.setHint(R.string.dialog_create_worksheet_prompt);
+		b.setView(nameBox);
+		
+		// Set up the right (okay/positive) button
+		b.setPositiveButton(R.string.create, new DialogInterface.OnClickListener()
+		{
+			public void onClick(DialogInterface dialog, int which)
+			{
+				// Grab the text the user entered
+				String name = nameBox.getText().toString();
+				
+				// Make sure it's valid input (not a duplicate, not empty)
+				// TODO: Search worksheet list for duplicates, then sort it when the
+				// new name is added
+				if (name.length() > 0)
+				{
+					if (worksheetList.size() == 1 && worksheetList.get(0) == "No worksheets found") worksheetList.clear();
+					worksheetList.add(name);
+					updateWorksheetCount();
+					loadWorksheetListview();
+				}
+			}
+		});
+		
+		// Set up the left (no/negative) button
+		b.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener()
+		{
+			public void onClick(DialogInterface dialog, int which)
+			{
+				dialog.cancel();
+			}
+		});
+		
+		// Show finished result
+		b.show();
 	}
 	
 	// Sets up the worksheet file for future writing and reading
 	private void setupWorksheetFile()
 	{
-		File f = new File(FILENAME_WORKSHEETS);
-		try
+		// End of line character (may differ by system)
+		String endl = System.getProperty("line.separator");
+		BufferedWriter bw = null;
+		FileInputStream fis = null;
+		
+		// Attempt to open the target file; if it doesn't exist, then create a blank instance of it
+		// for future data storage
+		try 
 		{
-			f.createNewFile();
+			fis = openFileInput(FILENAME_WORKSHEETS);
 		}
 		catch (IOException e)
 		{
 			e.printStackTrace();
-			Toast.makeText(this, "ERROR: IOException", Toast.LENGTH_SHORT).show();
+			Log.e(this.toString(), "Could not find worksheet storage file... creating it.");
+			
+			// Create the file
+			try
+			{
+				bw = new BufferedWriter(new OutputStreamWriter(openFileOutput(FILENAME_WORKSHEETS, MODE_PRIVATE)));
+				bw.write("Blank Worksheet" + endl);
+			}
+			catch (Exception ex)
+			{
+				ex.printStackTrace();
+				Log.e(this.toString(), "Couldn't use buffered writer.");
+			}
+			finally
+			{
+				if (bw != null)
+				{
+					try
+					{
+						bw.close();
+					}
+					catch (IOException exc)
+					{
+						e.printStackTrace();
+						Log.e(this.toString(), "Couldn't close buffered writer.");
+					}
+				}
+			}
+		}
+		finally
+		{
+			if (fis != null)
+			{
+				try 
+				{
+					fis.close();
+				}
+				catch (IOException e)
+				{
+					e.printStackTrace();
+					Log.e(this.toString(), "Couldn't close file input stream.");
+				}
+			}
 		}
 	}
 	
@@ -137,7 +245,7 @@ public class MainActivity extends Activity
 		try
 		{
 			// Open file input and wrappers: ends up in buffered reader
-			FileInputStream fis = new FileInputStream(FILENAME_WORKSHEETS);
+			FileInputStream fis = openFileInput(FILENAME_WORKSHEETS);
 			DataInputStream dis = new DataInputStream(fis);
 			BufferedReader br = new BufferedReader(new InputStreamReader(dis));
 			
@@ -155,21 +263,62 @@ public class MainActivity extends Activity
 		catch (FileNotFoundException e)
 		{
 			e.printStackTrace();
-			Toast.makeText(this, "ERROR: FileNotFoundException", Toast.LENGTH_SHORT).show();
+			Log.e(this.toString(), "FileNotFoundException");
 		}
 		catch (IOException e)
 		{
 			e.printStackTrace();
-			Toast.makeText(this, "ERROR: IOException", Toast.LENGTH_SHORT).show();
+			Log.e(this.toString(), "IOException");
 		}
 		
 		return count;
+	}
+	
+	private void writeWorksheetFile()
+	{
+		// End of line character (may differ by system)
+		String endl = System.getProperty("line.separator");
+		BufferedWriter bw = null;
+		
+		// Attempt to write worksheet list to file
+		try
+		{
+			bw = new BufferedWriter(new OutputStreamWriter(openFileOutput(FILENAME_WORKSHEETS, MODE_PRIVATE)));
+			int current = 0;
+			while (current < worksheetList.size())
+			{
+				bw.write(worksheetList.get(current) + endl);
+				current++;
+			}
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+			Log.e(this.toString(), "IOException for buffered writer.");
+		}
+		finally
+		{
+			if (bw != null)
+			{
+				try
+				{
+					bw.close();
+				}
+				catch (IOException ex)
+				{
+					ex.printStackTrace();
+					Log.e(this.toString(), "IOException while closing buffered writer.");
+				}
+			}
+		}
 	}
 	
 	// Populates the listview from the list of worksheets
 	// Note: uses hashmaps for extensibility... may add custom worksheet icons later
 	private void loadWorksheetListview()
 	{
+		// Populate the list, mapping the name of the worksheet to its proper view in the
+		// individual item layout (keeping hashmap -> simple adapter layout for extensibility)
 		List<HashMap<String, String>> hashList = new ArrayList<HashMap<String, String>>();
 		for(int i = 0; i < worksheetList.size(); i++)
 		{
@@ -181,6 +330,17 @@ public class MainActivity extends Activity
 		int[] to = {R.id.text_worksheet_name};
 		SimpleAdapter adapter = new SimpleAdapter(getBaseContext(), hashList, R.layout.listview_item_worksheets, from, to);
 		worksheetListView.setAdapter(adapter);
+		
+		// Make each item in the populated list clickable
+		worksheetListView.setOnItemClickListener(new OnItemClickListener()
+		{
+			  public void onItemClick(AdapterView<?> adapterView, View view, int position, long id)
+			  {
+				  // Test
+				  // TODO: Add functionality to open worksheets individually
+				  Toast.makeText(getBaseContext(), "Clicked: " + worksheetList.get(position), Toast.LENGTH_LONG).show();
+			  }
+		});
 	}
 
 	// Called when the user hits the menu softkey
@@ -190,6 +350,12 @@ public class MainActivity extends Activity
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
+	}
+	
+	// Sets the worksheet count next to the title
+	private void updateWorksheetCount()
+	{
+		worksheetTitleText.setText("Worksheets (" + worksheetList.size() + ")");
 	}
 
 };
