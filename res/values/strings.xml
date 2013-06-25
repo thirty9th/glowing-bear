@@ -11,5 +11,9 @@
     <string name="dialog_create_worksheet_prompt">Name of new worksheet</string>
     <string name="cancel">Cancel</string>
     <string name="create">Create</string>
+    <string name="confirm_deletion">Confirm Deletion</string>
+    <string name="confirm_deletion_prompt">Are you sure you want to delete this worksheet?</string>
+    <string name="delete">Delete</string>
+    <string name="placeholder">Placeholder</string>
 
 </resources>

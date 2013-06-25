@@ -1,0 +1,39 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android1="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relative_layout_main_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white" >
+
+    <RelativeLayout
+        android1:id="@+id/relative_layout_main_titlebar"
+        android1:layout_width="match_parent"
+        android1:layout_height="wrap_content"
+        android1:background="@color/super_dark_grey"
+        android1:padding="@dimen/main_menu_padding" >
+
+        <TextView
+            android1:id="@+id/text_worksheet_title"
+            android1:layout_width="wrap_content"
+            android1:layout_height="wrap_content"
+            android1:layout_alignParentLeft="true"
+            android1:layout_centerVertical="true"
+            android1:text="@string/placeholder"
+            android1:textAppearance="?android:attr/textAppearanceLarge"
+            android1:textColor="@color/white"
+            android1:textColorHint="@color/dark_grey" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android1:id="@+id/rule_worksheets_top"
+        android1:layout_width="match_parent"
+        android1:layout_height="3dp"
+        android1:background="@color/listview_item_worksheets_divider"
+        android1:layout_below="@+id/relative_layout_main_titlebar"
+        android1:orientation="vertical" >
+
+    </LinearLayout>
+
+</RelativeLayout>
