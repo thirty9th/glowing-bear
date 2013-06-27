@@ -11,6 +11,7 @@ package com.example.minecraftapp;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.DataInputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -27,6 +28,7 @@ public class FileManager
 
 	// File names
 	public static final String WORKSHEET_FILENAME = "worksheets";
+	public static final String WORKSHEET_DATA_DIRECTORY = "worksheet_data";
 	
 	// Globals
 	Context context;
@@ -177,6 +179,30 @@ public class FileManager
 					ex.printStackTrace();
 					Log.e(this.toString(), "IOException while closing buffered writer.");
 				}
+			}
+		}
+	}
+	
+	// Creates a worksheet data file storing items and quantities; also creates parent directory if it's missing
+	public void setupWorksheetDataFile(String fileName)
+	{
+		// Create a new file to work with if needed
+		File f = new File(WORKSHEET_DATA_DIRECTORY, fileName);
+		File worksheetsDir = new File(WORKSHEET_DATA_DIRECTORY);	// Check if dir exists
+		if (!(worksheetsDir.exists() && worksheetsDir.isDirectory()))
+		{
+			f.mkdir();				// Make its parent directory, 'worksheet_data/'
+		}
+		if (!(f.exists() && f.isFile()))
+		{
+			try
+			{
+				f.createNewFile();	// New, empty file
+			}
+			catch (IOException e)
+			{
+				e.printStackTrace();
+				Log.e(this.toString(), "Creating new file threw IOException.");
 			}
 		}
 	}

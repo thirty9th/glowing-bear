@@ -4,14 +4,18 @@
     android:id="@+id/relative_layout_main_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white" >
+    android:background="@color/white"
+    android1:onClick="onClickAddItem" >
 
     <RelativeLayout
         android1:id="@+id/relative_layout_main_titlebar"
         android1:layout_width="match_parent"
         android1:layout_height="wrap_content"
-        android1:background="@color/super_dark_grey"
-        android1:padding="@dimen/main_menu_padding" >
+        android1:background="@drawable/title_bar_gradient"
+        android1:paddingBottom="3dp"
+        android1:paddingLeft="@dimen/main_menu_padding"
+        android1:paddingRight="@dimen/main_menu_padding"
+        android1:paddingTop="3dp" >
 
         <TextView
             android1:id="@+id/text_worksheet_title"
@@ -19,10 +23,46 @@
             android1:layout_height="wrap_content"
             android1:layout_alignParentLeft="true"
             android1:layout_centerVertical="true"
+            android1:maxLines="1"
             android1:text="@string/placeholder"
             android1:textAppearance="?android:attr/textAppearanceLarge"
             android1:textColor="@color/white"
             android1:textColorHint="@color/dark_grey" />
+
+        <LinearLayout
+            android1:layout_width="wrap_content"
+            android1:layout_height="wrap_content"
+            android1:layout_alignParentRight="true"
+            android1:layout_centerVertical="true"
+            android1:gravity="center"
+            android1:onClick="onClickAddItem" >
+
+            <ImageView
+                android1:id="@+id/imageView1"
+                android1:layout_width="wrap_content"
+                android1:layout_height="wrap_content"
+                android1:layout_marginRight="5dp"
+                android1:src="@drawable/vertical_rule" />
+
+            <ImageButton
+                android1:id="@+id/button_add_item"
+                android1:layout_width="25dp"
+                android1:layout_height="25dp"
+                android1:layout_marginRight="5dp"
+                android1:background="@null"
+                android1:contentDescription="@string/button_add_worksheet_des"
+                android1:scaleType="fitCenter"
+                android1:src="@drawable/button_add_worksheet" />
+
+            <TextView
+                android1:id="@+id/textView1"
+                android1:layout_width="wrap_content"
+                android1:layout_height="wrap_content"
+                android1:text="@string/item"
+                android1:textAppearance="?android:attr/textAppearanceMedium"
+                android1:textColor="@color/white" />
+
+        </LinearLayout>
 
     </RelativeLayout>
 
@@ -35,5 +75,13 @@
         android1:orientation="vertical" >
 
     </LinearLayout>
+
+    <ListView
+        android1:id="@+id/list_items"
+        android1:layout_width="match_parent"
+        android1:layout_height="wrap_content"
+        android1:layout_alignParentLeft="true"
+        android1:layout_below="@+id/rule_worksheets_top" >
+    </ListView>
 
 </RelativeLayout>
