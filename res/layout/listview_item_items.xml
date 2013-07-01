@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/listview_item_worksheets_base"
+    android:id="@+id/listview_item_items_base"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical" >
@@ -13,8 +13,8 @@
 
         <ImageView
             android:id="@+id/image_tab"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_margin="@dimen/main_menu_padding"
@@ -23,10 +23,10 @@
             android:layout_marginTop="@dimen/main_menu_padding"
             android:contentDescription="@string/listview_item_worksheets_icon_des"
             android:scaleType="fitCenter"
-            android:src="@drawable/icon_worksheets" />
+            android:src="@drawable/icon_list_closed" />
 
         <TextView
-            android:id="@+id/text_listview_worksheet_name"
+            android:id="@+id/text_listview_item_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -35,6 +35,18 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@color/white"
             android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/text_listview_item_quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/text_listview_item_name"
+            android:layout_alignBottom="@+id/text_listview_item_name"
+            android:layout_marginLeft="@dimen/main_menu_padding"
+            android:layout_toRightOf="@+id/text_listview_item_name"
+            android:text="@string/placeholder"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/white" />
 
     </RelativeLayout>
 

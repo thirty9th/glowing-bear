@@ -34,8 +34,7 @@
             android1:layout_height="wrap_content"
             android1:layout_alignParentRight="true"
             android1:layout_centerVertical="true"
-            android1:gravity="center"
-            android1:onClick="onClickAddItem" >
+            android1:gravity="center" >
 
             <ImageView
                 android1:id="@+id/imageView1"
@@ -51,13 +50,15 @@
                 android1:layout_marginRight="5dp"
                 android1:background="@null"
                 android1:contentDescription="@string/button_add_worksheet_des"
+                android1:onClick="onClickAddItem"
                 android1:scaleType="fitCenter"
                 android1:src="@drawable/button_add_worksheet" />
 
             <TextView
-                android1:id="@+id/textView1"
+                android1:id="@+id/text_listview_item_quantity"
                 android1:layout_width="wrap_content"
                 android1:layout_height="wrap_content"
+                android1:onClick="onClickAddItem"
                 android1:text="@string/item"
                 android1:textAppearance="?android:attr/textAppearanceMedium"
                 android1:textColor="@color/white" />
@@ -81,7 +82,9 @@
         android1:layout_width="match_parent"
         android1:layout_height="wrap_content"
         android1:layout_alignParentLeft="true"
-        android1:layout_below="@+id/rule_worksheets_top" >
+        android1:layout_below="@+id/rule_worksheets_top"
+        android1:divider="@color/super_dark_grey" >
+
     </ListView>
 
 </RelativeLayout>

@@ -34,10 +34,7 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity
 {
-	
-	// File names
-	static final String FILENAME_WORKSHEETS = "worksheets";
-	
+
 	// Views to be instantiated
 	ListView worksheetListView;
 	TextView worksheetTitleText;
@@ -80,9 +77,7 @@ public class MainActivity extends Activity
 		// Instantiate the file manager and have it perform initial setups such as loading
 		// worksheets from file
 		fileManager = new FileManager(this);
-		fileManager.setupWorksheetFile();	// Set up worksheet storage file if first time open
-		worksheetList = fileManager.loadFileList(FileManager.WORKSHEET_FILENAME);
-		if (worksheetList.size() == 0) worksheetList.add("No worksheets found");
+		worksheetList = fileManager.listFiles(fileManager.WORKSHEET_DATA_DIRECTORY);
 		loadWorksheetListview();			// Add worksheets from the above list to the actual view
 		updateWorksheetCount();				// Update count of worksheets displayed on the titlebar
 
@@ -98,22 +93,6 @@ public class MainActivity extends Activity
 //			Toast.makeText(this, name + " has " + numRecipes + " recipes.", Toast.LENGTH_SHORT).show();
 //			count++;
 //		}
-	}
-	
-	// Called when app is stopped
-	@Override
-	protected void onStop()
-	{
-		super.onStop();
-		fileManager.writeWorksheetFile(worksheetList);
-	}
-	
-	// Called when app is paused
-	@Override
-	protected void onPause()
-	{
-		super.onPause();
-		fileManager.writeWorksheetFile(worksheetList);
 	}
 	
 	// Called when the user hits submit button on search bar
@@ -144,9 +123,9 @@ public class MainActivity extends Activity
 				// new name is added
 				if (name.length() > 0 && name.length() <= 32)
 				{
-					// Remove the dummy worksheet if it exists
-					if (worksheetList.size() == 1 && worksheetList.get(0) == "No worksheets found") worksheetList.clear();
-					worksheetList.add(name);
+					// Make a new blank file for the target worksheet
+					fileManager.writeLinesToFile(new ArrayList<String>(), name, fileManager.WORKSHEET_DATA_DIRECTORY);
+					worksheetList = fileManager.listFiles(fileManager.WORKSHEET_DATA_DIRECTORY);
 					Collections.sort(worksheetList);
 					updateWorksheetCount();
 					loadWorksheetListview();
@@ -186,7 +165,10 @@ public class MainActivity extends Activity
 			public void onClick(DialogInterface dialog, int which)
 			{
 				// Remove the selected worksheet
-				worksheetList.remove(pos);
+				String name = worksheetList.get(pos);
+				fileManager.deleteFile(name, fileManager.WORKSHEET_DATA_DIRECTORY);
+				worksheetList = fileManager.listFiles(fileManager.WORKSHEET_DATA_DIRECTORY);
+				Collections.sort(worksheetList);
 				loadWorksheetListview();
 				updateWorksheetCount();
 			}
@@ -229,7 +211,7 @@ public class MainActivity extends Activity
             hashList.add(hm);
         }
 		String[] from = {"name"};
-		int[] to = {R.id.text_worksheet_name};
+		int[] to = {R.id.text_listview_worksheet_name};
 		SimpleAdapter adapter = new SimpleAdapter(getBaseContext(), hashList, R.layout.listview_item_worksheets, from, to);
 		worksheetListView.setAdapter(adapter);
 		
