@@ -11,7 +11,6 @@ package com.example.minecraftapp;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import org.xmlpull.v1.XmlPullParserException;
@@ -30,7 +29,6 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -225,17 +223,7 @@ public class WorksheetActivity extends Activity
 	{
 		// Populate the list, mapping the name of the item to its proper view in the
 		// individual item layout (keeping hashmap -> simple adapter layout for extensibility)
-		List<HashMap<String, String>> hashList = new ArrayList<HashMap<String, String>>();
-		for(int i = 0; i < itemList.size(); i++)
-		{
-            HashMap<String, String> hm = new HashMap<String, String>();
-            hm.put("name", itemList.get(i).name);
-            hm.put("quantity", "(" + itemList.get(i).quantity + ")");
-            hashList.add(hm);
-        }
-		String[] from = {"name", "quantity"};
-		int[] to = {R.id.text_listview_item_name, R.id.text_listview_item_quantity};
-		SimpleAdapter adapter = new SimpleAdapter(getBaseContext(), hashList, R.layout.listview_item_items, from, to);
+		ItemListAdapter adapter = new ItemListAdapter(this, R.layout.listview_item_items, itemList);
 		itemListview.setAdapter(adapter);
 		
 		// Make each item in the populated list clickable
@@ -263,7 +251,6 @@ public class WorksheetActivity extends Activity
 					  else
 					  {
 						  showChildren(pos);		// Item directly underneath is of equal or greater precedence, show children
-						  //View v = adapterView.getChildAt(pos).;
 					  }
 				  }
 				  else								// Last item in the list
