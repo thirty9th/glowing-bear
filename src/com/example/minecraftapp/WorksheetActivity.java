@@ -188,9 +188,10 @@ public class WorksheetActivity extends Activity
 		b.setTitle(R.string.dialog_add_item_title);
 		
 		// Set up auto-complete
+		// TODO: Make sure the item names list is initialized before passing it to the
+		// adapter and build it if it's not
 		final AutoCompleteTextView itemName = (AutoCompleteTextView)v.findViewById(R.id.text_item_name);
-		String[] itemNamesArray = getResources().getStringArray(R.array.item_names_array);
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, itemNamesArray);
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, MainActivity.itemNamesList);
 		itemName.setAdapter(adapter);
 		
 		// Set up the right (okay/positive) button
@@ -203,12 +204,24 @@ public class WorksheetActivity extends Activity
 				String name = itemName.getText().toString();
 				String quantity = itemQuantity.getText().toString();
 
-				// TODO: Make sure it's valid input (non-empty, number limit etc.)
-				// TODO: Search item database for items, load them as quick-search results
 				// NOTE: Third parameter indicates the item's hierarchy level; a level of 0 is a parent item added by the user
 				// Items with levels of 1 indicate children of level 0 items and so forth
-				itemList.add(new Ingredient(quantity, name, 0));
-				loadItemListview();
+				// Check for errors in input before attempting to add the item
+				if (quantity.length() <= 0)
+				{
+					ELog.toast("Error", "Quantity field left blank");
+					return;
+				}
+				if (Integer.parseInt(quantity) < 10000 && Integer.parseInt(quantity) > 0)
+				{
+					if (itemManager.searchItem(name) != -1)
+					{
+						itemList.add(new Ingredient(quantity, name, 0));
+						loadItemListview();
+					}
+					else ELog.toast("Error", "Requested item not found");
+				}
+				else ELog.toast("Error", "Requested quantity must be between 1 and 10,000");
 			}
 		});
 		
@@ -242,11 +255,14 @@ public class WorksheetActivity extends Activity
 				// Delete the item and its open children from the list and re-load the listview
 				int originalLevel = itemList.get(pos).level;
 				itemList.remove(pos);
-				int currentLevel = itemList.get(pos).level;
-				while (pos < itemList.size() && currentLevel > originalLevel)
+				if (itemList.size() > 0 && pos < itemList.size())
 				{
-					itemList.remove(pos);
-					if (pos < itemList.size()) currentLevel = itemList.get(pos).level;
+					int currentLevel = itemList.get(pos).level;
+					while (pos < itemList.size() && currentLevel > originalLevel)
+					{
+						itemList.remove(pos);
+						if (pos < itemList.size()) currentLevel = itemList.get(pos).level;
+					}
 				}
 				loadItemListview();
 			}

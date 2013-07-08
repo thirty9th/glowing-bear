@@ -22,13 +22,6 @@
     <string name="dialog_delete_item_prompt">Are you sure you want to delete this item?</string>
     <string name="quantity_identifier">x</string>
     <string name="dialog_add_item_title">Add Item</string>
-    
-    <!-- Auto-complete suggestions for add item dialog -->
-    <string-array name="item_names_array">
-        <item>ladder</item>
-        <item>stick</item>
-        <item>wood planks</item>
-        <item>wood</item>
-    </string-array>
+    <string name="dialog_add_worksheet_title">Add Worksheet</string>
 
 </resources>

@@ -20,8 +20,10 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -43,6 +45,8 @@ public class MainActivity extends Activity
 	ItemDataManager itemManager;
 	List<String> worksheetList;
 	FileManager fileManager;
+	public static String[] itemNamesList;
+	ErrorLogManager ELog;
 
 	// Called when the activity receives a create intent
 	@Override
@@ -80,6 +84,14 @@ public class MainActivity extends Activity
 		worksheetList = fileManager.listFiles(fileManager.WORKSHEET_DATA_DIRECTORY);
 		loadWorksheetListview();			// Add worksheets from the above list to the actual view
 		updateWorksheetCount();				// Update count of worksheets displayed on the titlebar
+	
+		// Load the names of all the items
+		// These are used for auto-complete boxes in various activities
+		loadItemNamesArray();
+		
+		// Set up error manager
+		ELog = new ErrorLogManager();
+		ELog.setContext(this);
 	}
 	
 	// Called when the user hits submit button on search bar
@@ -89,13 +101,13 @@ public class MainActivity extends Activity
 	}
 	
 	// Called when the user hits the add worksheet button
-	public void onClickAddWorksheet(View v)
+	public void onClickAddWorksheet(View view)
 	{
 		// Set up and show a new alert dialog
 		AlertDialog.Builder b = new AlertDialog.Builder(this);
-		final EditText nameBox = new EditText(this);
-		nameBox.setHint(R.string.dialog_create_worksheet_prompt);
-		b.setView(nameBox);
+		View v = LayoutInflater.from(this).inflate(R.layout.dialog_add_worksheet, (ViewGroup)findViewById(R.id.dialog_add_worksheet_root));
+		b.setView(v);
+		b.setTitle(R.string.dialog_add_worksheet_title);
 		
 		// Set up the right (okay/positive) button
 		b.setPositiveButton(R.string.create, new DialogInterface.OnClickListener()
@@ -103,25 +115,25 @@ public class MainActivity extends Activity
 			public void onClick(DialogInterface dialog, int which)
 			{
 				// Grab the text the user entered
+				EditText nameBox = (EditText)((AlertDialog)dialog).findViewById(R.id.text_worksheet_name);
 				String name = nameBox.getText().toString();
 				
 				// Make sure it's valid input (not a duplicate, not empty)
-				// TODO: Search worksheet list for duplicates, then sort it when the
-				// new name is added
+				// Check for blank and/or duplicate names
 				if (name.length() > 0 && name.length() <= 32)
 				{
-					// Make a new blank file for the target worksheet
-					fileManager.writeLinesToFile(new ArrayList<String>(), name, fileManager.WORKSHEET_DATA_DIRECTORY);
-					worksheetList = fileManager.listFiles(fileManager.WORKSHEET_DATA_DIRECTORY);
-					Collections.sort(worksheetList);
-					updateWorksheetCount();
-					loadWorksheetListview();
+					if (!worksheetList.contains(name))
+					{
+						// Make a new blank file for the target worksheet
+						fileManager.writeLinesToFile(new ArrayList<String>(), name, fileManager.WORKSHEET_DATA_DIRECTORY);
+						worksheetList = fileManager.listFiles(fileManager.WORKSHEET_DATA_DIRECTORY);
+						Collections.sort(worksheetList);
+						updateWorksheetCount();
+						loadWorksheetListview();
+					}
+					else ELog.toast("Error", "Duplicate name of existing worksheet");
 				}
-				else
-				{
-					// User's entered name was either empty or too long
-					Toast.makeText(getApplication(), "Name must be non-empty and no more than 32 characters. Please try again.", Toast.LENGTH_LONG).show();
-				}
+				else ELog.toast("Error", "Name must be non-empty and no more than 32 characters");
 			}
 		});
 		
@@ -143,7 +155,8 @@ public class MainActivity extends Activity
 	{
 		// Set up and show a new alert dialog
 		AlertDialog.Builder b = new AlertDialog.Builder(this);
-		b.setMessage(R.string.confirm_deletion_prompt);
+		View v = LayoutInflater.from(this).inflate(R.layout.dialog_delete_worksheet, (ViewGroup)findViewById(R.id.dialog_delete_worksheet_root));
+		b.setView(v);
 		b.setTitle(R.string.confirm_deletion);
 
 		// Set up the right (okay/positive) button
@@ -239,6 +252,17 @@ public class MainActivity extends Activity
 	private void updateWorksheetCount()
 	{
 		worksheetTitleText.setText("Worksheets (" + worksheetList.size() + ")");
+	}
+	
+	// Loads all item names into an array of strings for auto complete adapters
+	private void loadItemNamesArray()
+	{
+		// Iterate through list of crafting items, adding their names to the array
+		itemNamesList = new String[itemManager.itemList.size()];
+		for (int count = 0; count < itemManager.itemList.size(); count++)
+		{
+			itemNamesList[count] = itemManager.itemList.get(count).name;
+		}
 	}
 
 };

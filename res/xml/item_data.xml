@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- 
+	Maintained from the crafting recipe list detailed at:
+	www.minecraftwiki.net/wiki/Crafting
+ -->
 <item_data>
     
-    <!-- Wood-based items -->
-	<item name="Ladder">
+    <!-- Basic recipes -->
+	<item name="Wood Planks">
 	    <recipe produced="4">
-	        <ingredient name="Stick" quantity="7" />
+	        <ingredient name="Wood" quantity="1" />
 	    </recipe>
 	</item>
 	<item name="Stick">
@@ -12,16 +16,1627 @@
 	        <ingredient name="Wood Planks" quantity="2" />
 	    </recipe>
 	</item>
-	<item name="Wood Planks">
+	<item name="Crafting Table">
+	    <recipe produced="1">
+	        <ingredient name="Wood Planks" quantity="4" />
+	    </recipe>
+	</item>
+	<item name="Furnace">
+	    <recipe produced="1">
+	        <ingredient name="Cobblestone" quantity="8" />
+	    </recipe>
+	</item>
+	<item name="Chest">
+	    <recipe produced="1">
+	        <ingredient name="Wood Planks" quantity="8" />
+	    </recipe>
+	</item>
+	<item name="Torch">
 	    <recipe produced="4">
-	        <ingredient name="Wood" quantity="1" />
+	        <ingredient name="Coal" quantity="1" />
+	        <ingredient name="Stick" quantity="1" />
+	    </recipe>
+	</item>
+	
+	<!--  Manufactured Recipes -->
+	<item name="Glowstone">
+	    <recipe produced="1">
+	        <ingredient name="Glowstone Dust" quantity="4" />
+	    </recipe>
+	</item>
+	<item name="Wool">
+	    <recipe produced="1">
+	        <ingredient name="String" quantity="4" />
+	    </recipe>
+	</item>
+	<item name="TNT">
+	    <recipe produced="1">
+	        <ingredient name="Gunpowder" quantity="5" />
+	        <ingredient name="Sand" quantity="4" />
+	    </recipe>
+	</item>
+	<item name="Stone Slab">
+	    <recipe produced="6">
+	        <ingredient name="Stone" quantity="3" />
+	    </recipe>
+	</item>
+	<item name="Sandstone Slab">
+	    <recipe produced="6">
+	        <ingredient name="Sandstone" quantity="3" />
+	    </recipe>
+	</item>
+	<item name="Cobblestone Slab">
+	    <recipe produced="6">
+	        <ingredient name="Cobblestone" quantity="3" />
+	    </recipe>
+	</item>
+	<item name="Brick Slab">
+	    <recipe produced="6">
+	        <ingredient name="Bricks" quantity="3" />
+	    </recipe>
+	</item>
+	<item name="Stone Brick Slab">
+	    <recipe produced="6">
+	        <ingredient name="Stone Brick" quantity="3" />
+	    </recipe>
+	</item>
+	<item name="Nether Brick Slab">
+	    <recipe produced="6">
+	        <ingredient name="Nether Brick" quantity="3" />
+	    </recipe>
+	</item>
+	<item name="Quartz Slab">
+	    <recipe produced="6">
+	        <ingredient name="Block of Quartz" quantity="3" />
+	    </recipe>
+	</item>
+	<item name="Wood Stairs">
+	    <recipe produced="4">
+	        <ingredient name="Wood Planks" quantity="6" />
+	    </recipe>
+	</item>
+	<item name="Cobblestone Stairs">
+	    <recipe produced="4">
+	        <ingredient name="Cobblestone" quantity="6" />
+	    </recipe>
+	</item>
+	<item name="Brick Stairs">
+	    <recipe produced="4">
+	        <ingredient name="Bricks" quantity="6" />
+	    </recipe>
+	</item>
+	<item name="Stone Brick Stairs">
+	    <recipe produced="4">
+	        <ingredient name="Bricks" quantity="6" />
+	    </recipe>
+	</item>
+	<item name="Nether Brick Stairs">
+	    <recipe produced="4">
+	        <ingredient name="Nether Bricks" quantity="6" />
+	    </recipe>
+	</item>
+	<item name="Sandstone Stairs">
+	    <recipe produced="4">
+	        <ingredient name="Sandstone" quantity="6" />
+	    </recipe>
+	</item>
+	<item name="Quartz Stairs">
+	    <recipe produced="4">
+	        <ingredient name="Block of Quartz" quantity="6" />
+	    </recipe>
+	</item>
+	<item name="Snow Block">
+	    <recipe produced="1">
+	        <ingredient name="Snowball" quantity="4" />
+	    </recipe>
+	</item>
+	<item name="Clay Block">
+	    <recipe produced="1">
+	        <ingredient name="Clay" quantity="4" />
+	    </recipe>
+	</item>
+	<item name="Bricks">
+	    <recipe produced="1">
+	        <ingredient name="Brick" quantity="4" />
+	    </recipe>
+	</item>
+	<item name="Stone Brick">
+	    <recipe produced="4">
+	        <ingredient name="Stone" quantity="4" />
+	    </recipe>
+	</item>
+	<item name="Nether Bricks">
+	    <recipe produced="1">
+	        <ingredient name="Nether Brick" quantity="4" />
+	    </recipe>
+	</item>
+	<item name="Bookshelf">
+	    <recipe produced="1">
+	        <ingredient name="Wood Planks" quantity="6" />
+	        <ingredient name="Book" quantity = "3" />
+	    </recipe>
+	</item>
+	<item name="Sandstone">
+	    <recipe produced="1">
+	        <ingredient name="Sand" quantity="4" />
+	    </recipe>
+	</item>
+	<item name="Smooth Sandstone">
+	    <recipe produced="4">
+	        <ingredient name="Sandstone" quantity="4" />
+	    </recipe>
+	</item>
+	<item name="Chiseled Sandstone">
+	    <recipe produced="1">
+	        <ingredient name="Sandstone Slab" quantity="2" />
+	    </recipe>
+	</item>
+	<item name="Block of Quartz">
+	    <recipe produced="1">
+	        <ingredient name="Nether Quartz" quantity="4" />
+	    </recipe>
+	</item>
+	<item name="Pillar Quartz Block">
+	    <recipe produced="2">
+	        <ingredient name="Block of Quartz" quantity="2" />
+	    </recipe>
+	</item>
+	<item name="Chiseled Quartz Block">
+	    <recipe produced="1">
+	        <ingredient name="Quartz Slab" quantity="2" />
+	    </recipe>
+	</item>
+	<item name="Jack 'o' Lantern">
+	    <recipe produced="1">
+	        <ingredient name="Pumpkin" quantity="1" />
+	        <ingredient name="Torch" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Ender Chest">
+	    <recipe produced="1">
+	        <ingredient name="Obsidian" quantity="8" />
+	        <ingredient name="Eye of Ender" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Anvil">
+	    <recipe produced="1">
+	        <ingredient name="Block of Iron" quantity="3" />
+	        <ingredient name="Iron Ingot" quantity="4" />
+	    </recipe>
+	</item>
+	<item name="Beacon">
+	    <recipe produced="1">
+	        <ingredient name="Glass" quantity="5" />
+	        <ingredient name="Nether Star" quantity="1" />
+	        <ingredient name="Obsidian" quantity="3" />
+	    </recipe>
+	</item>
+	
+	<!-- Transportation recipes -->
+	<item name="Rail">
+	    <recipe produced="16">
+	        <ingredient name="Iron Ingot" quantity="6" />
+	        <ingredient name="Stick" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Powered Rail">
+	    <recipe produced="6">
+	        <ingredient name="Gold Ingot" quantity="6" />
+	        <ingredient name="Stick" quantity="1" />
+	        <ingredient name="Redstone" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Detector Rail">
+	    <recipe produced="6">
+	        <ingredient name="Iron Ingot" quantity="6" />
+	        <ingredient name="Stone Presure Plate" quantity="1" />
+	        <ingredient name="Redstone" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Activator Rail">
+	    <recipe produced="6">
+	        <ingredient name="Iron Ingot" quantity="6" />
+	        <ingredient name="Stick" quantity="2" />
+	        <ingredient name="Redstone Torch" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Minecart">
+	    <recipe produced="1">
+	        <ingredient name="Iron Ingot" quantity="5" />
+	    </recipe>
+	</item>
+	<item name="Minecart with Furnace">
+	    <recipe produced="1">
+	        <ingredient name="Minecart" quantity="1" />
+	        <ingredient name="Furnace" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Minecart with Chest">
+	    <recipe produced="1">
+	        <ingredient name="Minecart" quantity="1" />
+	        <ingredient name="Chest" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Minecart with TNT">
+	    <recipe produced="1">
+	        <ingredient name="Minecart" quantity="1" />
+	        <ingredient name="TNT" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Minecart with Hopper">
+	    <recipe produced="1">
+	        <ingredient name="Minecart" quantity="1" />
+	        <ingredient name="Hopper" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Boat">
+	    <recipe produced="1">
+	        <ingredient name="Wood Planks" quantity="5" />
+	    </recipe>
+	</item>
+	
+	<!-- Tool recipes -->
+	<item name="Wooden Axe">
+	    <recipe produced="1">
+	        <ingredient name="Wood Planks" quantity="3" />
+	        <ingredient name="Stick" quantity="2" />
+	    </recipe>
+	</item>
+	<item name="Stone Axe">
+	    <recipe produced="1">
+	        <ingredient name="Cobblestone" quantity="3" />
+	        <ingredient name="Stick" quantity="2" />
+	    </recipe>
+	</item>
+	<item name="Iron Axe">
+	    <recipe produced="1">
+	        <ingredient name="Iron Ingot" quantity="3" />
+	        <ingredient name="Stick" quantity="2" />
+	    </recipe>
+	</item>
+	<item name="Diamond Axe">
+	    <recipe produced="1">
+	        <ingredient name="Diamond" quantity="3" />
+	        <ingredient name="Stick" quantity="2" />
+	    </recipe>
+	</item>
+	<item name="Gold Axe">
+	    <recipe produced="1">
+	        <ingredient name="Gold Ingot" quantity="3" />
+	        <ingredient name="Stick" quantity="2" />
+	    </recipe>
+	</item>
+	<item name="Wooden Pickaxe">
+	    <recipe produced="1">
+	        <ingredient name="Wood Planks" quantity="3" />
+	        <ingredient name="Stick" quantity="2" />
+	    </recipe>
+	</item>
+	<item name="Stone Pickaxe">
+	    <recipe produced="1">
+	        <ingredient name="Cobblestone" quantity="3" />
+	        <ingredient name="Stick" quantity="2" />
+	    </recipe>
+	</item>
+	<item name="Iron Pickaxe">
+	    <recipe produced="1">
+	        <ingredient name="Iron Ingot" quantity="3" />
+	        <ingredient name="Stick" quantity="2" />
+	    </recipe>
+	</item>
+	<item name="Diamond Pickaxe">
+	    <recipe produced="1">
+	        <ingredient name="Diamond" quantity="3" />
+	        <ingredient name="Stick" quantity="2" />
+	    </recipe>
+	</item>
+	<item name="Gold Pickaxe">
+	    <recipe produced="1">
+	        <ingredient name="Gold Ingot" quantity="3" />
+	        <ingredient name="Stick" quantity="2" />
+	    </recipe>
+	</item>
+	<item name="Wooden Shovel">
+	    <recipe produced="1">
+	        <ingredient name="Wood Planks" quantity="1" />
+	        <ingredient name="Stick" quantity="2" />
+	    </recipe>
+	</item>
+	<item name="Stone Shovel">
+	    <recipe produced="1">
+	        <ingredient name="Cobblestone" quantity="1" />
+	        <ingredient name="Stick" quantity="2" />
+	    </recipe>
+	</item>
+	<item name="Iron Shovel">
+	    <recipe produced="1">
+	        <ingredient name="Iron Ingot" quantity="1" />
+	        <ingredient name="Stick" quantity="2" />
+	    </recipe>
+	</item>
+	<item name="Diamond Shovel">
+	    <recipe produced="1">
+	        <ingredient name="Diamond" quantity="1" />
+	        <ingredient name="Stick" quantity="2" />
+	    </recipe>
+	</item>
+	<item name="Gold Shovel">
+	    <recipe produced="1">
+	        <ingredient name="Gold Ingot" quantity="1" />
+	        <ingredient name="Stick" quantity="2" />
+	    </recipe>
+	</item>
+	<item name="Wooden Hoe">
+	    <recipe produced="1">
+	        <ingredient name="Wood Planks" quantity="2" />
+	        <ingredient name="Stick" quantity="2" />
+	    </recipe>
+	</item>
+	<item name="Stone Hoe">
+	    <recipe produced="1">
+	        <ingredient name="Cobblestone" quantity="2" />
+	        <ingredient name="Stick" quantity="2" />
+	    </recipe>
+	</item>
+	<item name="Iron Hoe">
+	    <recipe produced="1">
+	        <ingredient name="Iron Ingot" quantity="2" />
+	        <ingredient name="Stick" quantity="2" />
+	    </recipe>
+	</item>
+	<item name="Diamond Hoe">
+	    <recipe produced="1">
+	        <ingredient name="Diamond" quantity="2" />
+	        <ingredient name="Stick" quantity="2" />
+	    </recipe>
+	</item>
+	<item name="Gold Hoe">
+	    <recipe produced="1">
+	        <ingredient name="Gold Ingot" quantity="2" />
+	        <ingredient name="Stick" quantity="2" />
+	    </recipe>
+	</item>
+	<item name="Flint and Steel">
+	    <recipe produced="1">
+	        <ingredient name="Iron Ingot" quantity="1" />
+	        <ingredient name="Flint" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Bucket">
+	    <recipe produced="1">
+	        <ingredient name="Iron Ingot" quantity="3" />
+	    </recipe>
+	</item>
+	<item name="Compass">
+	    <recipe produced="1">
+	        <ingredient name="Iron Ingot" quantity="4" />
+	        <ingredient name="Redstone" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Map">
+	    <recipe produced="1">
+	        <ingredient name="Paper" quantity="8" />
+	        <ingredient name="Compass" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Clock">
+	    <recipe produced="1">
+	        <ingredient name="Gold Ingot" quantity="4" />
+	        <ingredient name="Redstone" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Fishing Rod">
+	    <recipe produced="1">
+	        <ingredient name="Stick" quantity="3" />
+	        <ingredient name="String" quantity="2" />
+	    </recipe>
+	</item>
+	<item name="Carrot on a Stick">
+	    <recipe produced="1">
+	        <ingredient name="Fishing Rod" quantity="1" />
+	        <ingredient name="Carrot" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Shears">
+	    <recipe produced="1">
+	        <ingredient name="Iron Ingot" quantity="2" />
+	    </recipe>
+	</item>
+	<item name="Fire Charge">
+	    <recipe produced="3">
+	        <ingredient name="Blaze Powder" quantity="1" />
+	        <ingredient name="Coal" quantity="1" />
+	        <ingredient name="Gunpowder" quantity="1" />
+	    </recipe>
+	</item>
+	
+	<!-- Weapon recipes -->
+	<item name="Wooden Sword">
+	    <recipe produced="1">
+	        <ingredient name="Wooden Planks" quantity="2" />
+	        <ingredient name="Stick" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Stone Sword">
+	    <recipe produced="1">
+	        <ingredient name="Cobblestone" quantity="2" />
+	        <ingredient name="Stick" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Iron Sword">
+	    <recipe produced="1">
+	        <ingredient name="Iron Ingot" quantity="2" />
+	        <ingredient name="Stick" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Diamond Sword">
+	    <recipe produced="1">
+	        <ingredient name="Diamond" quantity="2" />
+	        <ingredient name="Stick" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Gold Sword">
+	    <recipe produced="1">
+	        <ingredient name="Gold Ingot" quantity="2" />
+	        <ingredient name="Stick" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Bow">
+	    <recipe produced="1">
+	        <ingredient name="String" quantity="3" />
+	        <ingredient name="Stick" quantity="3" />
+	    </recipe>
+	</item>
+	<item name="Arrow">
+	    <recipe produced="4">
+	        <ingredient name="Flint" quantity="1" />
+	        <ingredient name="Stick" quantity="1" />
+	        <ingredient name="Feather" quantity="1" />
+	    </recipe>
+	</item>
+	
+	<!-- Armor recipes -->
+	<item name="Leather Cap">
+	    <recipe produced="1">
+	        <ingredient name="Leather" quantity="5" />
+	    </recipe>
+	</item>
+	<item name="Gold Helmet">
+	    <recipe produced="1">
+	        <ingredient name="Gold Ingot" quantity="5" />
+	    </recipe>
+	</item>
+	<item name="Iron Helmet">
+	    <recipe produced="1">
+	        <ingredient name="Iron Ingot" quantity="5" />
+	    </recipe>
+	</item>
+	<item name="Diamond Helmet">
+	    <recipe produced="1">
+	        <ingredient name="Diamond" quantity="5" />
+	    </recipe>
+	</item>
+	<item name="Leather Tunic">
+	    <recipe produced="1">
+	        <ingredient name="Leather" quantity="8" />
+	    </recipe>
+	</item>
+	<item name="Gold Chestplate">
+	    <recipe produced="1">
+	        <ingredient name="Gold Ingot" quantity="8" />
+	    </recipe>
+	</item>
+	<item name="Iron Chestplate">
+	    <recipe produced="1">
+	        <ingredient name="Iron Ingot" quantity="8" />
+	    </recipe>
+	</item>
+	<item name="Diamond Chestplate">
+	    <recipe produced="1">
+	        <ingredient name="Diamond" quantity="8" />
+	    </recipe>
+	</item>
+	<item name="Leather Pants">
+	    <recipe produced="1">
+	        <ingredient name="Leather" quantity="7" />
+	    </recipe>
+	</item>
+	<item name="Gold Leggings">
+	    <recipe produced="1">
+	        <ingredient name="Gold Ingot" quantity="7" />
+	    </recipe>
+	</item>
+	<item name="Iron Leggings">
+	    <recipe produced="1">
+	        <ingredient name="Iron Ingot" quantity="7" />
+	    </recipe>
+	</item>
+	<item name="Diamond Leggings">
+	    <recipe produced="1">
+	        <ingredient name="Diamond" quantity="7" />
+	    </recipe>
+	</item>
+	<item name="Leather Boots">
+	    <recipe produced="1">
+	        <ingredient name="Leather" quantity="4" />
+	    </recipe>
+	</item>
+	<item name="Gold Boots">
+	    <recipe produced="1">
+	        <ingredient name="Gold Ingot" quantity="4" />
+	    </recipe>
+	</item>
+	<item name="Iron Boots">
+	    <recipe produced="1">
+	        <ingredient name="Iron Ingot" quantity="4" />
+	    </recipe>
+	</item>
+	<item name="Diamond Boots">
+	    <recipe produced="1">
+	        <ingredient name="Diamond" quantity="4" />
+	    </recipe>
+	</item>
+	
+	<!-- Mechanism recipes -->
+	<item name="Trapdoor">
+	    <recipe produced="2">
+	        <ingredient name="Wood Planks" quantity="2" />
+	    </recipe>
+	</item>
+	<item name="Wooden Pressure Plate">
+	    <recipe produced="1">
+	        <ingredient name="Wood Planks" quantity="2" />
+	    </recipe>
+	</item>
+	<item name="Stone Pressure Plate">
+	    <recipe produced="1">
+	        <ingredient name="Stone" quantity="2" />
+	    </recipe>
+	</item>
+	<item name="Light Weighted Pressure Plate">
+	    <recipe produced="1">
+	        <ingredient name="Gold Ingot" quantity="2" />
+	    </recipe>
+	</item>
+	<item name="Heavy Weighted Pressure Plate">
+	    <recipe produced="1">
+	        <ingredient name="Iron Ingot" quantity="2" />
+	    </recipe>
+	</item>
+	<item name="Button">
+	    <recipe produced="1">
+	        <ingredient name="Stone" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Note Block">
+	    <recipe produced="1">
+	        <ingredient name="Wood Planks" quantity="8" />
+	        <ingredient name="Redstone" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Jukebox">
+	    <recipe produced="1">
+	        <ingredient name="Wood Planks" quantity="8" />
+	        <ingredient name="Diamond" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Dispenser">
+	    <recipe produced="1">
+	        <ingredient name="Cobblestone" quantity="7" />
+	        <ingredient name="Bow" quantity="1" />
+	        <ingredient name="Redstone" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Dropper">
+	    <recipe produced="1">
+	        <ingredient name="Cobblestone" quantity="7" />
+	        <ingredient name="Redstone" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Piston">
+	    <recipe produced="1">
+	        <ingredient name="Cobblestone" quantity="4" />
+	        <ingredient name="Iron Ingot" quantity="1" />
+	        <ingredient name="Redstone" quantity="1" />
+	        <ingredient name="Wood Planks" quantity="3" />
+	    </recipe>
+	</item>
+	<item name="Sticky Piston">
+	    <recipe produced="1">
+	        <ingredient name="Piston" quantity="1" />
+	        <ingredient name="Slimeball" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Redstone Lamp">
+	    <recipe produced="1">
+	        <ingredient name="Glowstone" quantity="1" />
+	        <ingredient name="Redstone" quantity="4" />
+	    </recipe>
+	</item>
+	<item name="Redstone Torch">
+	    <recipe produced="1">
+	        <ingredient name="Stick" quantity="1" />
+	        <ingredient name="Redstone" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Lever">
+	    <recipe produced="1">
+	        <ingredient name="Stick" quantity="1" />
+	        <ingredient name="Cobblestone" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Tripwire Hook">
+	    <recipe produced="2">
+	        <ingredient name="Iron Ingot" quantity="1" />
+	        <ingredient name="Stick" quantity="1" />
+	        <ingredient name="Wood Planks" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Daylight Sensor">
+	    <recipe produced="1">
+	        <ingredient name="Glass" quantity="3" />
+	        <ingredient name="Nether Quartz" quantity="3" />
+	        <ingredient name="Wood Slab" quantity="3" />
+	    </recipe>
+	</item>
+	<item name="Hopper">
+	    <recipe produced="1">
+	        <ingredient name="Iron Ingot" quantity="5" />
+	        <ingredient name="Chest" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Trapped Chest">
+	    <recipe produced="1">
+	        <ingredient name="Tripwire Hook" quantity="1" />
+	        <ingredient name="Chest" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Wooden Door">
+	    <recipe produced="1">
+	        <ingredient name="Wood Planks" quantity="6" />
+	    </recipe>
+	</item>
+	<item name="Iron Door">
+	    <recipe produced="1">
+	        <ingredient name="Iron Ingot" quantity="6" />
+	    </recipe>
+	</item>
+	<item name="Redstone Repeator">
+	    <recipe produced="1">
+	        <ingredient name="Redstone Torch" quantity="2" />
+	        <ingredient name="Redstone" quantity="1" />
+	        <ingredient name="Stone" quantity="3" />
+	    </recipe>
+	</item>
+	<item name="Redstone Comparator">
+	    <recipe produced="1">
+	        <ingredient name="Redstone Torch" quantity="3" />
+	        <ingredient name="Nether Quartz" quantity="1" />
+	        <ingredient name="Stone" quantity="3" />
+	    </recipe>
+	</item>
+	
+	<!-- Food recipes -->
+	<item name="Bowl">
+	    <recipe produced="4">
+	        <ingredient name="Wood Planks" quantity="3" />
+	    </recipe>
+	</item>
+	<item name="Mushroom Stew">
+	    <recipe produced="1">
+	        <ingredient name="Red Mushroom" quantity="1" />
+	        <ingredient name="Brown Mushroom" quantity="1" />
+	        <ingredient name="Bowl" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Bread">
+	    <recipe produced="1">
+	        <ingredient name="Wheat" quantity="3" />
+	    </recipe>
+	</item>
+	<item name="Sugar">
+	    <recipe produced="1">
+	        <ingredient name="Sugar Cane" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Cake">
+	    <recipe produced="1">
+	        <ingredient name="Milk" quantity="3" />
+	        <ingredient name="Sugar" quantity="2" />
+	        <ingredient name="Egg" quantity="1" />
+	        <ingredient name="Wheat" quantity="3" />
+	    </recipe>
+	</item>
+	<item name="Cookie">
+	    <recipe produced="8">
+	        <ingredient name="Wheat" quantity="2" />
+	        <ingredient name="Cocoa Beans" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Golden Apple">
+	    <recipe produced="1">
+	        <ingredient name="Gold Ingot" quantity="8" />
+	        <ingredient name="Apple" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Enchanted Golden Apple">
+	    <recipe produced="1">
+	        <ingredient name="Gold Block" quantity="8" />
+	        <ingredient name="Apple" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Melon Seeds">
+	    <recipe produced="1">
+	        <ingredient name="Melon" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Pumpkin Seeds">
+	    <recipe produced="4">
+	        <ingredient name="Pumpkin" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Pumpkin Pie">
+	    <recipe produced="1">
+	        <ingredient name="Egg" quantity="1" />
+	        <ingredient name="Sugar" quantity="1" />
+	        <ingredient name="Pumpkin" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Golden Carrot">
+	    <recipe produced="1">
+	        <ingredient name="Gold Nugget" quantity="8" />
+	        <ingredient name="Carrot" quantity="1" />
+	    </recipe>
+	</item>
+	
+	<!-- Miscellaneous recipes -->
+	<item name="Block of Gold">
+	    <recipe produced="1">
+	        <ingredient name="Gold Ingot" quantity="9" />
+	    </recipe>
+	</item>
+	<item name="Block of Iron">
+	    <recipe produced="1">
+	        <ingredient name="Iron Ingot" quantity="9" />
+	    </recipe>
+	</item>
+	<item name="Block of Diamondk">
+	    <recipe produced="1">
+	        <ingredient name="Diamond" quantity="9" />
+	    </recipe>
+	</item>
+	<item name="Lapis Lazuli Block">
+	    <recipe produced="1">
+	        <ingredient name="Lapis Lazuli" quantity="9" />
+	    </recipe>
+	</item>
+	<item name="Block of Emerald">
+	    <recipe produced="1">
+	        <ingredient name="Emerald" quantity="9" />
+	    </recipe>
+	</item>
+	<item name="Block of Redstone">
+	    <recipe produced="1">
+	        <ingredient name="Redstone" quantity="9" />
+	    </recipe>
+	</item>
+	<item name="Ladder">
+	    <recipe produced="3">
+	        <ingredient name="Stick" quantity="7" />
+	    </recipe>
+	</item>
+	<item name="Glass">
+	    <recipe produced="1">
+			<ingredient name="Sand" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Glass Pane">
+	    <recipe produced="16">
+	        <ingredient name="Glass" quantity="6" />
+	    </recipe>
+	</item>
+	<item name="Iron Bars">
+	    <recipe produced="16">
+	        <ingredient name="Iron Ingot" quantity="6" />
+	    </recipe>
+	</item>
+	<item name="Fence">
+	    <recipe produced="2">
+	        <ingredient name="Stick" quantity="6" />
+	    </recipe>
+	</item>
+	<item name="Nether Brick Fence">
+	    <recipe produced="6">
+	        <ingredient name="Nether Bricks" quantity="6" />
+	    </recipe>
+	</item>
+	<item name="Fence Gate">
+	    <recipe produced="1">
+	        <ingredient name="Stick" quantity="4" />
+	        <ingredient name="Wood Planks" quantity="2" />
+	    </recipe>
+	</item>
+	<item name="Cobblestone Wall">
+	    <recipe produced="6">
+	        <ingredient name="Cobblestone" quantity="6" />
+	    </recipe>
+	</item>
+	<item name="Mossy Cobblestone Wall">
+	    <recipe produced="6">
+	        <ingredient name="Mossy Cobblestone" quantity="6" />
+	    </recipe>
+	</item>
+	<item name="Melon Block">
+	    <recipe produced="1">
+	        <ingredient name="Melon" quantity="9" />
+	    </recipe>
+	</item>
+	<item name="Painting">
+	    <recipe produced="1">
+	        <ingredient name="Stick" quantity="8" />
+	        <ingredient name="Wool" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Item Frame">
+	    <recipe produced="1">
+	        <ingredient name="Stick" quantity="8" />
+	        <ingredient name="Leather" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Sign">
+	    <recipe produced="3">
+	        <ingredient name="Stick" quantity="1" />
+	        <ingredient name="Wood Planks" quantity="6" />
+	    </recipe>
+	</item>
+	<item name="Paper">
+	    <recipe produced="3">
+	        <ingredient name="Sugar Cane" quantity="3" />
+	    </recipe>
+	</item>
+	<item name="Book">
+	    <recipe produced="1">
+	        <ingredient name="Paper" quantity="3" />
+	        <ingredient name="Leather" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Book and Quill">
+	    <recipe produced="1">
+	        <ingredient name="Feather" quantity="1" />
+	        <ingredient name="Ink Sac" quantity="1" />
+	        <ingredient name="Book" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Bed">
+	    <recipe produced="1">
+	        <ingredient name="Wool" quantity="3" />
+	        <ingredient name="Wood Planks" quantity="3" />
+	    </recipe>
+	</item>
+	<item name="Gold Ingot">
+	    <recipe produced="1">
+	        <ingredient name="Gold Nugget" quantity="9" />
+	    </recipe>
+	</item>
+	<item name="Eye of Ender">
+	    <recipe produced="1">
+	        <ingredient name="Ender Pearl" quantity="1" />
+	        <ingredient name="Blaze Powder" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Flower Pot">
+	    <recipe produced="1">
+	        <ingredient name="Brick" quantity="3" />
+	    </recipe>
+	</item>
+	<item name="Horse Saddle">
+	    <recipe produced="1">
+			<ingredient name="Leather" quantity="5" />
+			<ingredient name="Iron Ingot" quantity="3" />
+	    </recipe>
+	</item>
+	<item name="Brick">
+	    <recipe produced="1">
+			<ingredient name="Clay" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Lead">
+	    <recipe produced="2">
+			<ingredient name="String" quantity="4" />
+			<ingredient name="Slimeball" quantity="1" />
+	    </recipe>
+	</item>
+	
+	<!-- Dye recipes -->
+	<item name="Bone Meal">
+	    <recipe produced="3">
+	        <ingredient name="Bone" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Light Gray Dye">
+	    <recipe produced="2">
+	        <ingredient name="Bone Meal" quantity="2" />
+	        <ingredient name="Ink Sac" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Gray Dye">
+	    <recipe produced="2">
+	        <ingredient name="Bone Meal" quantity="1" />
+	        <ingredient name="Ink Sac" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Rose Red">
+	    <recipe produced="2">
+	        <ingredient name="Rose" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Orange Dye">
+	    <recipe produced="2">
+	        <ingredient name="Rose Red" quantity="1" />
+	        <ingredient name="Dandelion Yellow" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Dandelion Yellow">
+	    <recipe produced="2">
+	        <ingredient name="Dandelion" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Lime Dye">
+	    <recipe produced="2">
+	        <ingredient name="Cactus Green" quantity="1" />
+	        <ingredient name="Bone Meal" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Light Blue Dye">
+	    <recipe produced="2">
+	        <ingredient name="Lapis Lazuli" quantity="1" />
+	        <ingredient name="Bone Meal" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Cyan Dye">
+	    <recipe produced="2">
+	        <ingredient name="Lapis Lazuli" quantity="1" />
+	        <ingredient name="Cactus Green" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Purple Dye">
+	    <recipe produced="2">
+	        <ingredient name="Lapis Lazuli" quantity="1" />
+	        <ingredient name="Rose Red" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Magenta Dye">
+	    <recipe produced="3">
+	        <ingredient name="Bone Meal" quantity="1" />
+	        <ingredient name="Rose Red" quantity="2" />
+	        <ingredient name="Lapis Lazuli" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Pink Dye">
+	    <recipe produced="2">
+	        <ingredient name="Bone Meal" quantity="1" />
+	        <ingredient name="Rose Red" quantity="1" />
+	    </recipe>
+	</item>
+	
+	<!-- Wool recipes -->
+	<item name="Light Gray Wool">
+	    <recipe produced="1">
+	        <ingredient name="Wool" quantity="1" />
+	        <ingredient name="Light Gray Dye" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Gray Wool">
+	    <recipe produced="1">
+	        <ingredient name="Wool" quantity="1" />
+	        <ingredient name="Gray Dye" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Black Wool">
+	    <recipe produced="1">
+	        <ingredient name="Wool" quantity="1" />
+	        <ingredient name="Ink Sac" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Red Wool">
+	    <recipe produced="1">
+	        <ingredient name="Wool" quantity="1" />
+	        <ingredient name="Rose Red" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Orange Wool">
+	    <recipe produced="1">
+	        <ingredient name="Wool" quantity="1" />
+	        <ingredient name="Orange Dye" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Yellow Wool">
+	    <recipe produced="1">
+	        <ingredient name="Wool" quantity="1" />
+	        <ingredient name="Dandelion Yellow" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Lime Wool">
+	    <recipe produced="1">
+	        <ingredient name="Wool" quantity="1" />
+	        <ingredient name="Lime Dye" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Green Wool">
+	    <recipe produced="1">
+	        <ingredient name="Wool" quantity="1" />
+	        <ingredient name="Cactus Green" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Cyan Wool">
+	    <recipe produced="1">
+	        <ingredient name="Wool" quantity="1" />
+	        <ingredient name="Cyan Dye" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Light Blue Wool">
+	    <recipe produced="1">
+	        <ingredient name="Wool" quantity="1" />
+	        <ingredient name="Light Blue Dye" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Blue Wool">
+	    <recipe produced="1">
+	        <ingredient name="Wool" quantity="1" />
+	        <ingredient name="Lapis Lazuli" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Purple Wool">
+	    <recipe produced="1">
+	        <ingredient name="Wool" quantity="1" />
+	        <ingredient name="Purple Dye" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Magenta Wool">
+	    <recipe produced="1">
+	        <ingredient name="Wool" quantity="1" />
+	        <ingredient name="Magenta Dye" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Pink Wool">
+	    <recipe produced="1">
+	        <ingredient name="Wool" quantity="1" />
+	        <ingredient name="Pink Dye" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Brown Wool">
+	    <recipe produced="1">
+	        <ingredient name="Wool" quantity="1" />
+	        <ingredient name="Cocoa Beans" quantity="1" />
+	    </recipe>
+	</item>
+	
+	<!-- Enchantment and brewing recipes -->
+	<item name="Enchantment Table">
+	    <recipe produced="1">
+	        <ingredient name="Book" quantity="1" />
+	        <ingredient name="Diamond" quantity="2" />
+	        <ingredient name="Obsidian" quantity="4" />
+	    </recipe>
+	</item>
+	<item name="Glass Bottle">
+	    <recipe produced="3">
+	        <ingredient name="Glass" quantity="3" />
+	    </recipe>
+	</item>
+	<item name="Cauldron">
+	    <recipe produced="1">
+	        <ingredient name="Iron Ingot" quantity="7" />
+	    </recipe>
+	</item>
+	<item name="Brewing Stand">
+	    <recipe produced="1">
+	        <ingredient name="Blaze Rod" quantity="1" />
+	        <ingredient name="Cobblestone" quantity="3" />
+	    </recipe>
+	</item>
+	<item name="Blaze Powder">
+	    <recipe produced="2">
+	        <ingredient name="Blaze Rod" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Magma Cream">
+	    <recipe produced="1">
+	        <ingredient name="Slimeball" quantity="1" />
+	        <ingredient name="Blaze Powder" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Fermented Spider Eye">
+	    <recipe produced="1">
+	        <ingredient name="Spider Eye" quantity="1" />
+	        <ingredient name="Brown Mushroom" quantity="1" />
+	        <ingredient name="Sugar" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Glistering Melon">
+	    <recipe produced="1">
+	        <ingredient name="Gold Nugget" quantity="8" />
+	        <ingredient name="Melon" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Gold Nugget">
+	    <recipe produced="9">
+	        <ingredient name="Gold Ingot" quantity="1" />
+	    </recipe>
+	</item>
+	
+	<!-- Base items -->
+	<!-- Note: Uses the notation 'produced="0"' to indicate a base item,
+	that is, an item with no child ingredients -->
+	<item name="Stone">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Grass Block">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Dirt">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Cobblestone">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Sapling">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Bedrock">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Bucket of Water">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Bucket of Lava">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Sand">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Gravel">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Gold Ore">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Iron Ore">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Coal">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
 	    </recipe>
 	</item>
 	<item name="Wood">
 	    <recipe produced="0">
-	        <ingredient name="base_ingredient" quantity = "0" />
+			<ingredient name="base_item" quantity="1" />
 	    </recipe>
 	</item>
-
+	<item name="Leaves">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Sponge">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Lapis Lazuli">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Dead Bush">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Mossy Cobblestone">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Obsidian">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Diamond">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Wheat">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Cactus">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Clay">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Sugar Cane">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Pumpkin">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Netherrack">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Soul Sand">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Glowstone">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Brown Mushroom">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Red Mushroom">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Melon">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Vines">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Mycelium">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Lily Pad">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Nether Bricks">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Nether Wart">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="End Portal Block">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="End Stone">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Dragon Egg">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Cocoa Beans">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Emerald">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Carrot">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Potato">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Mob Head">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Nether Quartz">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Coal">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="String">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Feather">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Gunpowder">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Seeds">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Flint">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Raw Porkchop">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Cooked Porkchop">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Saddle">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Redstone">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Snowball">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Leather">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Milk">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Clay">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Sugar Cane">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Slimeball">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Egg">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Glowstone Dust">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Raw Fish">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Cooked Fish">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Bone">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Melon">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Raw Beef">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Steak">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Raw Chicken">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Cooked Chicken">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Rotten Flesh">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Ender Pearl">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Blaze Rod">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Ghast Tear">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Spider Eye">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Emerald">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Baked Potato">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Nether Star">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Nether Brick">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Name Tag">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="13 Disc">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Cat Disc">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="blocks Disc">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="chirp Disc">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="far Disc">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="mall Disc">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="mellohi Disc">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="stal Disc">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="strad Disc">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="ward Disc">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="11 Disc">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="wait Disc">
+	    <recipe produced="0">
+			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
 	
 </item_data>
