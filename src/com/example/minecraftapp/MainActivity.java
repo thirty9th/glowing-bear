@@ -80,19 +80,6 @@ public class MainActivity extends Activity
 		worksheetList = fileManager.listFiles(fileManager.WORKSHEET_DATA_DIRECTORY);
 		loadWorksheetListview();			// Add worksheets from the above list to the actual view
 		updateWorksheetCount();				// Update count of worksheets displayed on the titlebar
-
-		// Test display of all items
-//		int count = 0;
-//		int numRecipes;
-//		String name;
-//		while (count < itemManager.itemList.size())
-//		{
-//			CraftingItem thisItem = itemManager.itemList.get(count);
-//			numRecipes = thisItem.recipes.size();
-//			name = thisItem.name;
-//			Toast.makeText(this, name + " has " + numRecipes + " recipes.", Toast.LENGTH_SHORT).show();
-//			count++;
-//		}
 	}
 	
 	// Called when the user hits submit button on search bar

@@ -27,6 +27,8 @@ import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -181,8 +183,15 @@ public class WorksheetActivity extends Activity
 	{
 		// Set up and show a new alert dialog
 		AlertDialog.Builder b = new AlertDialog.Builder(this);
-		View v = LayoutInflater.from(this).inflate(R.layout.dialog_add_item, (ViewGroup)findViewById(R.id.dialog_add_item_root));
+		final View v = LayoutInflater.from(this).inflate(R.layout.dialog_add_item, (ViewGroup)findViewById(R.id.dialog_add_item_root));
 		b.setView(v);
+		b.setTitle(R.string.dialog_add_item_title);
+		
+		// Set up auto-complete
+		final AutoCompleteTextView itemName = (AutoCompleteTextView)v.findViewById(R.id.text_item_name);
+		String[] itemNamesArray = getResources().getStringArray(R.array.item_names_array);
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, itemNamesArray);
+		itemName.setAdapter(adapter);
 		
 		// Set up the right (okay/positive) button
 		b.setPositiveButton(R.string.add, new DialogInterface.OnClickListener()
@@ -190,7 +199,6 @@ public class WorksheetActivity extends Activity
 			public void onClick(DialogInterface dialog, int which)
 			{
 				// Instantiate our views and grab info from them
-				EditText itemName = (EditText)((AlertDialog)dialog).findViewById(R.id.text_item_name);
 				EditText itemQuantity = (EditText)((AlertDialog)dialog).findViewById(R.id.text_item_quantity);
 				String name = itemName.getText().toString();
 				String quantity = itemQuantity.getText().toString();
@@ -217,6 +225,46 @@ public class WorksheetActivity extends Activity
 		b.show();
 	}
 	
+	// Called when the user long-clicks an item for deletion
+	public void onDeleteItem(final int pos)
+	{
+		// Set up and show a new alert dialog
+		AlertDialog.Builder b = new AlertDialog.Builder(this);
+		View v = LayoutInflater.from(this).inflate(R.layout.dialog_delete_item, (ViewGroup)findViewById(R.id.dialog_delete_item_root));
+		b.setView(v);
+		b.setTitle(R.string.confirm_deletion);
+
+		// Set up the right (okay/positive) button
+		b.setPositiveButton(R.string.delete, new DialogInterface.OnClickListener()
+		{
+			public void onClick(DialogInterface dialog, int which)
+			{
+				// Delete the item and its open children from the list and re-load the listview
+				int originalLevel = itemList.get(pos).level;
+				itemList.remove(pos);
+				int currentLevel = itemList.get(pos).level;
+				while (pos < itemList.size() && currentLevel > originalLevel)
+				{
+					itemList.remove(pos);
+					if (pos < itemList.size()) currentLevel = itemList.get(pos).level;
+				}
+				loadItemListview();
+			}
+		});
+
+		// Set up the left (no/negative) button
+		b.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener()
+		{
+			public void onClick(DialogInterface dialog, int which)
+			{
+				dialog.cancel();
+			}
+		});
+
+		// Show finished result
+		b.show();
+	}
+	
 	// Populates the listview from the list of items
 	// Note: uses hashmaps for extensibility... may add custom item icons later
 	private void loadItemListview()
@@ -232,7 +280,7 @@ public class WorksheetActivity extends Activity
 			  public void onItemClick(AdapterView<?> adapterView, View view, int pos, long id)
 			  {
 				  // Toggle visibility of the selected item's children
-				  if (pos < itemList.size() - 1)	// Not last item in the list
+				  if (pos < itemList.size() - 1)						// Not last item in the list
 				  {
 					  int currentLevel = itemList.get(pos).level;
 					  if (itemList.get(pos + 1).level > currentLevel)	// Item directly underneath is of lower precendence, hide children
@@ -267,7 +315,8 @@ public class WorksheetActivity extends Activity
 			public boolean onItemLongClick(AdapterView<?> parent, View view, int pos, long id)
 			{
 				// Create a dialog asking the user if they want to delete the selected worksheet
-				//onDeleteWorksheet(pos);
+				// Note: The user should only be able to delete base items they added (level 0 items)
+				if (itemList.get(pos).level == 0) onDeleteItem(pos);
 				
 				return false;
 			}

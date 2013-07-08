@@ -37,13 +37,22 @@
             android:textSize="16sp" />
 
         <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/text_listview_item_name"
+            android:layout_toRightOf="@+id/text_listview_item_name"
+            android:paddingLeft="@dimen/main_menu_padding"
+            android:text="@string/quantity_identifier"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/white" />
+
+        <TextView
             android:id="@+id/text_listview_item_quantity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/text_listview_item_name"
-            android:layout_alignBottom="@+id/text_listview_item_name"
-            android:layout_marginLeft="@dimen/main_menu_padding"
-            android:layout_toRightOf="@+id/text_listview_item_name"
+            android:layout_alignBottom="@+id/image_tab"
+            android:layout_toRightOf="@+id/textView1"
             android:text="@string/placeholder"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@color/white" />
