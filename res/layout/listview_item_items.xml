@@ -11,20 +11,6 @@
         android:layout_height="65dp"
         android:background="@color/dark_grey" >
 
-        <ImageView
-            android:id="@+id/image_tab"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:layout_margin="@dimen/main_menu_padding"
-            android:layout_marginBottom="@dimen/main_menu_padding"
-            android:layout_marginLeft="@dimen/main_menu_padding"
-            android:layout_marginTop="@dimen/main_menu_padding"
-            android:contentDescription="@string/listview_item_worksheets_icon_des"
-            android:scaleType="fitCenter"
-            android:src="@drawable/icon_list_closed" />
-
         <TextView
             android:id="@+id/text_listview_item_name"
             android:layout_width="wrap_content"
@@ -57,12 +43,35 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@color/white" />
 
+        <LinearLayout
+            android:id="@+id/listview_item_color_tag"
+            android:layout_width="3dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/red_highlight"
+            android:orientation="vertical" >
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/image_tab"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_margin="@dimen/main_menu_padding"
+            android:layout_toRightOf="@+id/listview_item_color_tag"
+            android:contentDescription="@string/listview_item_worksheets_icon_des"
+            android:scaleType="fitCenter"
+            android:src="@drawable/icon_list_closed" />
     </RelativeLayout>
 
     <LinearLayout
+        android:id="@+id/listview_item_divider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/listview_item_worksheets_divider"
+        android:background="@color/super_dark_grey"
         android:orientation="vertical" >
 
     </LinearLayout>

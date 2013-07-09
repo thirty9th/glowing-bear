@@ -24,5 +24,8 @@
     <color name="listview_item_worksheets_divider">#000000</color>
     <color name="super_dark_grey">#1D1D1D</color>
     <color name="red_highlight">#FF0000</color>
+    <color name="red">#FF0000</color>
+    <color name="blue">#0000FF</color>
+    <color name="green">#00FF00</color>
 
 </resources>

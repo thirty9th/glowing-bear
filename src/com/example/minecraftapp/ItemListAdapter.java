@@ -23,9 +23,12 @@ import android.widget.TextView;
 public class ItemListAdapter extends ArrayAdapter<Ingredient>
 {
 
+	// Globals
 	Context context;
 	int id;
 	List<Ingredient> data = new ArrayList<Ingredient>();
+	ColorQueue colorQ;
+	
 	
 	// Constructor
 	public ItemListAdapter(Context inContext, int inId, List<Ingredient> inData)
@@ -34,6 +37,7 @@ public class ItemListAdapter extends ArrayAdapter<Ingredient>
 		this.id = inId;
 		this.context = inContext;
 		this.data = inData;
+		colorQ = new ColorQueue();
 	}
 	
 	// Implement the getView method from ArrayAdapter
@@ -81,6 +85,12 @@ public class ItemListAdapter extends ArrayAdapter<Ingredient>
 		// Set indentation of the item's view according to its child status
 		View root = row.findViewById(R.id.listview_item_items_container);
 		root.setPadding((40 * ingredient.level), 0, 0, 0);
+		
+		// Set proper color of the color tag; advance to next color if this is a level 0 item
+		if (ingredient.level == 0) colorQ.next();
+		if (position == 0) colorQ.reset();
+		View colorTag = row.findViewById(R.id.listview_item_color_tag);
+		colorTag.setBackgroundColor(colorQ.currentColor());
 		
 		return row;
 	}
