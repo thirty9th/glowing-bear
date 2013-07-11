@@ -27,8 +27,10 @@ public class ItemListAdapter extends ArrayAdapter<Ingredient>
 	Context context;
 	int id;
 	List<Ingredient> data = new ArrayList<Ingredient>();
-	ColorQueue colorQ;
-	
+	ErrorLogManager ELog;
+	List<Boolean> openTabStatus;
+	List<Boolean> bigDivider;
+	List<Integer> indentation;
 	
 	// Constructor
 	public ItemListAdapter(Context inContext, int inId, List<Ingredient> inData)
@@ -37,7 +39,16 @@ public class ItemListAdapter extends ArrayAdapter<Ingredient>
 		this.id = inId;
 		this.context = inContext;
 		this.data = inData;
-		colorQ = new ColorQueue();
+		ELog = new ErrorLogManager();
+		ELog.setContext(context);
+		
+		// Initialize the boolean array for setting the correct images and dividers
+		openTabStatus = new ArrayList<Boolean>();
+		for (int i = 0; i < inData.size(); i++) openTabStatus.add(false);
+		bigDivider = new ArrayList<Boolean>();
+		for (int i = 0; i < inData.size(); i++) bigDivider.add(false);
+		indentation = new ArrayList<Integer>();
+		for (int i = 0; i < inData.size(); i++) indentation.add(20);
 	}
 	
 	// Implement the getView method from ArrayAdapter
@@ -77,21 +88,43 @@ public class ItemListAdapter extends ArrayAdapter<Ingredient>
 			Ingredient next = data.get(position + 1);
 			if (ingredient.level < next.level)
 			{
-				holder.icon.setImageResource(R.drawable.icon_list_open);
+				openTabStatus.set(position, true);
 			}
 		}
+		else openTabStatus.set(position, false);
+		
+		// Now set image according to the boolean array (avoids view recycling pitfall)
+		if (openTabStatus.get(position)) holder.icon.setImageResource(R.drawable.icon_list_open);
 		else holder.icon.setImageResource(R.drawable.icon_list_closed);
 		
+		// Set the thick divider to separate distinct items and their children
+		if (position < data.size() - 1 && position > 0)
+		{
+			if (data.get(position + 1).level == 0)	// If the next item is a parent item
+			{
+				bigDivider.set(position, true);
+			}
+			else bigDivider.set(position, false);
+		}
+		else bigDivider.set(position, false);
+		
+		// Now set the thick divider according to the boolean array
+		if (bigDivider.get(position))
+		{
+			View divider = row.findViewById(R.id.listview_item_divider);
+			ViewGroup.LayoutParams params = divider.getLayoutParams();
+			params.height = 15; 				// In device pixels
+			divider.requestLayout();
+		}
+		
 		// Set indentation of the item's view according to its child status
+		if (ingredient.level > 0)
+		{
+			indentation.set(position, ((ingredient.level + 1) * 35));
+		}
 		View root = row.findViewById(R.id.listview_item_items_container);
-		root.setPadding((40 * ingredient.level), 0, 0, 0);
-		
-		// Set proper color of the color tag; advance to next color if this is a level 0 item
-		if (ingredient.level == 0) colorQ.next();
-		if (position == 0) colorQ.reset();
-		View colorTag = row.findViewById(R.id.listview_item_color_tag);
-		colorTag.setBackgroundColor(colorQ.currentColor());
-		
+		root.setPadding(indentation.get(position), 0, 0, 0);
+
 		return row;
 	}
 	

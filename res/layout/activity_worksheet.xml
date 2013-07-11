@@ -4,8 +4,7 @@
     android:id="@+id/relative_layout_main_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    android1:onClick="onClickAddItem" >
+    android:background="@color/white" >
 
     <RelativeLayout
         android1:id="@+id/relative_layout_main_titlebar"
@@ -55,7 +54,7 @@
                 android1:src="@drawable/button_add_worksheet" />
 
             <TextView
-                android1:id="@+id/text_listview_item_quantity"
+                android1:id="@+id/text_add_item_title"
                 android1:layout_width="wrap_content"
                 android1:layout_height="wrap_content"
                 android1:onClick="onClickAddItem"
