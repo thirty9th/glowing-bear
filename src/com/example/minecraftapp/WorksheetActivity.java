@@ -20,6 +20,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -285,10 +286,16 @@ public class WorksheetActivity extends Activity
 	// Note: uses hashmaps for extensibility... may add custom item icons later
 	private void loadItemListview()
 	{
+		// Save position in the list
+		Parcelable state = itemListview.onSaveInstanceState();
+		
 		// Populate the list, mapping the name of the item to its proper view in the
 		// individual item layout (keeping hashmap -> simple adapter layout for extensibility)
 		ItemListAdapter adapter = new ItemListAdapter(this, R.layout.listview_item_items, itemList);
 		itemListview.setAdapter(adapter);
+		
+		// Scroll back to saved position
+		itemListview.onRestoreInstanceState(state);
 		
 		// Make each item in the populated list clickable
 		itemListview.setOnItemClickListener(new OnItemClickListener()

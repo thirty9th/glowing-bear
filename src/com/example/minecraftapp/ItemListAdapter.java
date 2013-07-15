@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class ItemListAdapter extends ArrayAdapter<Ingredient>
@@ -68,6 +69,7 @@ public class ItemListAdapter extends ArrayAdapter<Ingredient>
 			holder.icon = (ImageView)row.findViewById(R.id.image_tab);
 			holder.name = (TextView)row.findViewById(R.id.text_listview_item_name);
 			holder.quantity = (TextView)row.findViewById(R.id.text_listview_item_quantity);
+			holder.divider = (LinearLayout)row.findViewById(R.id.listview_item_divider);
 			
 			row.setTag(holder);
 		}
@@ -98,7 +100,7 @@ public class ItemListAdapter extends ArrayAdapter<Ingredient>
 		else holder.icon.setImageResource(R.drawable.icon_list_closed);
 		
 		// Set the thick divider to separate distinct items and their children
-		if (position < data.size() - 1 && position > 0)
+		if (position < data.size() - 1)
 		{
 			if (data.get(position + 1).level == 0)	// If the next item is a parent item
 			{
@@ -111,10 +113,15 @@ public class ItemListAdapter extends ArrayAdapter<Ingredient>
 		// Now set the thick divider according to the boolean array
 		if (bigDivider.get(position))
 		{
-			View divider = row.findViewById(R.id.listview_item_divider);
-			ViewGroup.LayoutParams params = divider.getLayoutParams();
+			ViewGroup.LayoutParams params = holder.divider.getLayoutParams();
 			params.height = 15; 				// In device pixels
-			divider.requestLayout();
+			holder.divider.requestLayout();
+		}
+		else
+		{
+			ViewGroup.LayoutParams params = holder.divider.getLayoutParams();
+			params.height = 2;
+			holder.divider.requestLayout();
 		}
 		
 		// Set indentation of the item's view according to its child status
@@ -134,6 +141,7 @@ public class ItemListAdapter extends ArrayAdapter<Ingredient>
 		ImageView icon;
 		TextView name;
 		TextView quantity;
+		LinearLayout divider;
 	}
 	
 }
