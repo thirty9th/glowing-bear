@@ -23,5 +23,7 @@
     <string name="quantity_identifier">x</string>
     <string name="dialog_add_item_title">Add Item</string>
     <string name="dialog_add_worksheet_title">Add Worksheet</string>
+    <string name="show_recipe">Show Recipe</string>
+    <string name="delete_item">Delete Item</string>
 
 </resources>

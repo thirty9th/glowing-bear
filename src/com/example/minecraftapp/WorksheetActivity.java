@@ -31,6 +31,7 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -337,9 +338,10 @@ public class WorksheetActivity extends Activity
 		{
 			public boolean onItemLongClick(AdapterView<?> parent, View view, int pos, long id)
 			{
-				// Create a dialog asking the user if they want to delete the selected worksheet
+				// Create a dialog asking the user if they want to delete the selected item
 				// Note: The user should only be able to delete base items they added (level 0 items)
-				if (itemList.get(pos).level == 0) onDeleteItem(pos);
+				//if (itemList.get(pos).level == 0) onDeleteItem(pos);
+				openItemSubmenu(pos);
 				
 				return false;
 			}
@@ -374,6 +376,48 @@ public class WorksheetActivity extends Activity
 			// Tell the list view to update to reflect the changes to the list of items
 			loadItemListview();
 		}
+	}
+	
+	// Opens a small dialog prompting the user to either delete the selected item or open its recipe
+	// sheet
+	private void openItemSubmenu(final int pos)
+	{
+		// Set up a new dialog
+		View v = LayoutInflater.from(this).inflate(R.layout.dialog_item_submenu, (ViewGroup)findViewById(R.id.dialog_item_submenu_root));
+		TextView textDeleteItem = (TextView)v.findViewById(R.id.text_delete_item);
+		TextView textShowRecipe = (TextView)v.findViewById(R.id.text_show_recipe);
+		final AlertDialog dialog = new AlertDialog.Builder(this).setView(v).show();
+		
+		// If the item is not a base item, don't display the option for deletion
+		if (itemList.get(pos).level != 0)
+		{
+			textDeleteItem.setVisibility(View.GONE);
+			LinearLayout divider = (LinearLayout)v.findViewById(R.id.dialog_items_submenu_divider);
+			divider.setVisibility(View.GONE);
+		}
+		
+		// Set click listener on delete item option
+		if (itemList.get(pos).level == 0)
+		{
+			textDeleteItem.setOnClickListener(new View.OnClickListener()
+			{
+				public void onClick(View view)
+				{
+					dialog.dismiss();	// Dismiss the small submenu dialog
+					onDeleteItem(pos);	// Show the confirmation to delete the item
+				}
+			});
+		}
+		
+		// Set click listener on show recipe option
+		textShowRecipe.setOnClickListener(new View.OnClickListener()
+		{
+			public void onClick(View view)
+			{
+				dialog.dismiss();	// Dismiss the small submenu dialog
+				ELog.toast("NOTE", "Clicked show recipe");
+			}
+		});
 	}
 	
 }
