@@ -29,13 +29,13 @@
                 android:layout_height="wrap_content"
                 android:background="@color/grid_background"
                 android:contentDescription="@string/image_grid_item_des"
-                android:minHeight="35dp"
-                android:minWidth="35dp" >
+                android:minHeight="@dimen/item_icon_size"
+                android:minWidth="@dimen/item_icon_size" >
 
                 <ImageView
                     android:id="@+id/layout_grid_row1_image1"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
+                    android:layout_width="@dimen/item_icon_size"
+                    android:layout_height="@dimen/item_icon_size"
                     android:background="@null"
                     android:contentDescription="@string/image_grid_item_des"
                     android:scaleType="fitCenter" />
@@ -48,14 +48,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/main_menu_padding"
                 android:background="@color/grid_background"
-                android:minHeight="35dp"
-                android:minWidth="35dp" >
+                android:minHeight="@dimen/item_icon_size"
+                android:minWidth="@dimen/item_icon_size" >
 
                 <ImageView
                     android:id="@+id/layout_grid_row1_image2"
                     android:scaleType="fitCenter"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
+                    android:layout_width="@dimen/item_icon_size"
+                    android:layout_height="@dimen/item_icon_size"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:background="@null"
@@ -68,14 +68,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/main_menu_padding"
                 android:background="@color/grid_background"
-                android:minHeight="35dp"
-                android:minWidth="35dp" >
+                android:minHeight="@dimen/item_icon_size"
+                android:minWidth="@dimen/item_icon_size" >
 
                 <ImageView
                     android:id="@+id/layout_grid_row1_image3"
                     android:scaleType="fitCenter"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
+                    android:layout_width="@dimen/item_icon_size"
+                    android:layout_height="@dimen/item_icon_size"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:background="@null"
@@ -96,14 +96,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/grid_background"
-                android:minHeight="35dp"
-                android:minWidth="35dp" >
+                android:minHeight="@dimen/item_icon_size"
+                android:minWidth="@dimen/item_icon_size" >
 
                 <ImageView
                     android:id="@+id/layout_grid_row2_image1"
                     android:scaleType="fitCenter"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
+                    android:layout_width="@dimen/item_icon_size"
+                    android:layout_height="@dimen/item_icon_size"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:background="@null"
@@ -116,14 +116,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/main_menu_padding"
                 android:background="@color/grid_background"
-                android:minHeight="35dp"
-                android:minWidth="35dp" >
+                android:minHeight="@dimen/item_icon_size"
+                android:minWidth="@dimen/item_icon_size" >
 
                 <ImageView
                     android:id="@+id/layout_grid_row2_image2"
                     android:scaleType="fitCenter"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
+                    android:layout_width="@dimen/item_icon_size"
+                    android:layout_height="@dimen/item_icon_size"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:background="@null"
@@ -136,14 +136,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/main_menu_padding"
                 android:background="@color/grid_background"
-                android:minHeight="35dp"
-                android:minWidth="35dp" >
+                android:minHeight="@dimen/item_icon_size"
+                android:minWidth="@dimen/item_icon_size" >
 
                 <ImageView
                     android:id="@+id/layout_grid_row2_image3"
                     android:scaleType="fitCenter"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
+                    android:layout_width="@dimen/item_icon_size"
+                    android:layout_height="@dimen/item_icon_size"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:background="@null"
@@ -165,14 +165,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/grid_background"
-                android:minHeight="35dp"
-                android:minWidth="35dp" >
+                android:minHeight="@dimen/item_icon_size"
+                android:minWidth="@dimen/item_icon_size" >
 
                 <ImageView
                     android:id="@+id/layout_grid_row3_image1"
                     android:scaleType="fitCenter"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
+                    android:layout_width="@dimen/item_icon_size"
+                    android:layout_height="@dimen/item_icon_size"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:background="@null"
@@ -185,14 +185,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/main_menu_padding"
                 android:background="@color/grid_background"
-                android:minHeight="35dp"
-                android:minWidth="35dp" >
+                android:minHeight="@dimen/item_icon_size"
+                android:minWidth="@dimen/item_icon_size" >
 
                 <ImageView
                     android:id="@+id/layout_grid_row3_image2"
                     android:scaleType="fitCenter"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
+                    android:layout_width="@dimen/item_icon_size"
+                    android:layout_height="@dimen/item_icon_size"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:background="@null"
@@ -205,14 +205,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/main_menu_padding"
                 android:background="@color/grid_background"
-                android:minHeight="35dp"
-                android:minWidth="35dp" >
+                android:minHeight="@dimen/item_icon_size"
+                android:minWidth="@dimen/item_icon_size" >
 
                 <ImageView
                     android:id="@+id/layout_grid_row3_image3"
                     android:scaleType="fitCenter"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
+                    android:layout_width="@dimen/item_icon_size"
+                    android:layout_height="@dimen/item_icon_size"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:background="@null"

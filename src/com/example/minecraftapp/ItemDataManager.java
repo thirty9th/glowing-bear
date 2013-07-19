@@ -160,6 +160,7 @@ public class ItemDataManager
 	{
 		String fileName = inName.replace(' ', '_').toLowerCase(Locale.ENGLISH);
 		fileName = "item_" + fileName;
+		fileName = fileName.replace("'", "");
 		return fileName;
 	}
 	

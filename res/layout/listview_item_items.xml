@@ -34,8 +34,8 @@
 
             <ImageView
                 android:id="@+id/image_item_icon"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="@dimen/item_icon_size"
+                android:layout_height="@dimen/item_icon_size"
                 android:contentDescription="@string/item_icon_des"
                 android:src="@null" />
 
