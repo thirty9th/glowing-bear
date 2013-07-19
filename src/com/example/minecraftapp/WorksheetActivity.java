@@ -17,6 +17,7 @@ import org.xmlpull.v1.XmlPullParserException;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -31,6 +32,7 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -415,9 +417,88 @@ public class WorksheetActivity extends Activity
 			public void onClick(View view)
 			{
 				dialog.dismiss();	// Dismiss the small submenu dialog
-				ELog.toast("NOTE", "Clicked show recipe");
+				onShowRecipe(pos);	// Show crafting grid dialog
 			}
 		});
+	}
+	
+	// Shows the target recipe in the 3 x 3 crafting grid format with images
+	private void onShowRecipe(final int pos)
+	{
+		// Set up a new dialog
+		View v = LayoutInflater.from(this).inflate(R.layout.dialog_show_recipe, (ViewGroup)findViewById(R.id.dialog_show_recipe_root));
+		ImageView imageUL = (ImageView)v.findViewById(R.id.layout_grid_row1_image1);
+		ImageView imageUC = (ImageView)v.findViewById(R.id.layout_grid_row1_image2);
+		ImageView imageUR = (ImageView)v.findViewById(R.id.layout_grid_row1_image3);
+		ImageView imageL = (ImageView)v.findViewById(R.id.layout_grid_row2_image1);
+		ImageView imageC = (ImageView)v.findViewById(R.id.layout_grid_row2_image2);
+		ImageView imageR = (ImageView)v.findViewById(R.id.layout_grid_row2_image3);
+		ImageView imageLL = (ImageView)v.findViewById(R.id.layout_grid_row3_image1);
+		ImageView imageLC = (ImageView)v.findViewById(R.id.layout_grid_row3_image2);
+		ImageView imageLR = (ImageView)v.findViewById(R.id.layout_grid_row3_image3);
+		
+		// Load proper images into the grid squares
+		int index = itemManager.searchItem(itemList.get(pos).name);
+		CraftingItem thisItem = itemManager.itemList.get(index);
+		CraftingGrid grid = thisItem.grid;
+		if (grid.ul != null)	// Here we are parsing the item name (e.g. "Wood Planks") into the qualified image name (e.g. "wood_planks")
+		{
+			String imageName = ItemDataManager.getImageFilename(grid.ul);
+			imageUL.setImageResource(getResources().getIdentifier(imageName, "drawable", "com.example.minecraftapp"));
+		}
+		if (grid.uc != null)
+		{
+			String imageName = ItemDataManager.getImageFilename(grid.uc);
+			imageUC.setImageResource(getResources().getIdentifier(imageName, "drawable", "com.example.minecraftapp"));
+		}
+		if (grid.ur != null)
+		{
+			String imageName = ItemDataManager.getImageFilename(grid.ur);
+			imageUR.setImageResource(getResources().getIdentifier(imageName, "drawable", "com.example.minecraftapp"));
+		}
+		if (grid.l != null)
+		{
+			String imageName = ItemDataManager.getImageFilename(grid.l);
+			imageL.setImageResource(getResources().getIdentifier(imageName, "drawable", "com.example.minecraftapp"));
+		}
+		if (grid.c != null)
+		{
+			String imageName = ItemDataManager.getImageFilename(grid.c);
+			imageC.setImageResource(getResources().getIdentifier(imageName, "drawable", "com.example.minecraftapp"));
+		}
+		if (grid.r != null)
+		{
+			String imageName = ItemDataManager.getImageFilename(grid.r);
+			imageR.setImageResource(getResources().getIdentifier(imageName, "drawable", "com.example.minecraftapp"));
+		}
+		if (grid.ll != null)
+		{
+			String imageName = ItemDataManager.getImageFilename(grid.ll);
+			imageLL.setImageResource(getResources().getIdentifier(imageName, "drawable", "com.example.minecraftapp"));
+		}
+		if (grid.lc != null)
+		{
+			String imageName = ItemDataManager.getImageFilename(grid.lc);
+			imageLC.setImageResource(getResources().getIdentifier(imageName, "drawable", "com.example.minecraftapp"));
+		}
+		if (grid.lr != null)
+		{
+			String imageName = ItemDataManager.getImageFilename(grid.lr);
+			imageLR.setImageResource(getResources().getIdentifier(imageName, "drawable", "com.example.minecraftapp"));
+		}
+		
+		// Set up the back button
+		Builder b = new AlertDialog.Builder(this);
+		b.setNegativeButton(R.string.back, new DialogInterface.OnClickListener()
+		{
+			public void onClick(DialogInterface dialog, int which)
+			{
+				dialog.dismiss();
+			}
+		});
+		
+		// Show the resulting dialog
+		final AlertDialog dialog = b.setView(v).show();
 	}
 	
 }

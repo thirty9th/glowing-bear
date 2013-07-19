@@ -8,7 +8,7 @@
     <RelativeLayout
         android:id="@+id/listview_item_items_container"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="65dp"
         android:background="@color/dark_grey"
         android:padding="@dimen/main_menu_padding" >
 
@@ -22,13 +22,32 @@
             android:scaleType="fitCenter"
             android:src="@drawable/icon_list_closed" />
 
-        <LinearLayout
-            android:id="@+id/listview_item_items_text_container"
+        <RelativeLayout
+            android:id="@+id/layout_item_icon_frame"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/main_menu_padding"
             android:layout_toRightOf="@+id/image_tab"
+            android:background="@color/grid_background"
+            android:padding="2dp" >
+
+            <ImageView
+                android:id="@+id/image_item_icon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:contentDescription="@string/item_icon_des"
+                android:src="@null" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/listview_item_items_text_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/layout_item_icon_frame"
+            android:layout_marginLeft="@dimen/main_menu_padding"
+            android:layout_toRightOf="@+id/layout_item_icon_frame"
             android:orientation="vertical" >
 
             <TextView
@@ -62,6 +81,7 @@
                     android:textColor="@color/white" />
             </LinearLayout>
         </LinearLayout>
+
     </RelativeLayout>
 
     <LinearLayout

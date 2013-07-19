@@ -30,6 +30,12 @@ public class ErrorLogManager
 		Toast.makeText(context, key + ": " + value.toString(), Toast.LENGTH_SHORT).show();
 	}
 	
+	// Used for display of any toString-able object
+	public void toast(String text)
+	{
+		Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
+	}
+	
 	// Sets the defualt context for toasts
 	public void setContext(Context newContext)
 	{

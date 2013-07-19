@@ -8,7 +8,7 @@
 
     <TextView
         android:id="@+id/text_show_recipe"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/show_recipe"
         android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -26,7 +26,7 @@
 
     <TextView
         android:id="@+id/text_delete_item"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/delete_item"
         android:textAppearance="?android:attr/textAppearanceMedium" />

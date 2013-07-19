@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -23,11 +24,13 @@ public class ItemDataManager
 {
 	// Member variables
 	List<CraftingItem> itemList;
+	ErrorLogManager ELog;
 	
 	// Constructor
 	public ItemDataManager()
 	{
 		itemList = new ArrayList<CraftingItem>();
+		this.ELog = new ErrorLogManager();
 	}
 	
 	// Adds a new list of ingredients to the target item; also defines how many of this item
@@ -62,11 +65,12 @@ public class ItemDataManager
 	{
 		// Instantiate a new resource parser to read data from file
 		XmlResourceParser p = context.getResources().getXml(R.xml.item_data);
+		ELog.setContext(context);
 		
 		// Move through the document and parse relevant info
 		p.next();
 		int eventType = p.getEventType();
-		String attName, attValue, attQuantity, attProduced;
+		String attName, attValue, attQuantity, attProduced, attPosition, attItem;
 		Recipe ingredientList;
 		while (eventType != XmlPullParser.END_DOCUMENT)
 		{
@@ -105,6 +109,39 @@ public class ItemDataManager
 						// Add this newly assembled recipe to the current item's list of recipes
 						addItemRecipe(attName, ingredientList, context);
 					}
+					else if (p.getName().equalsIgnoreCase("grid") && eventType == XmlPullParser.START_TAG)	// Parse grid info
+					{
+						// Add the appropriate grid data to the current item named by attName
+						CraftingItem currentItem = itemList.get(searchItem(attName));
+						currentItem.grid = new CraftingGrid();
+						
+						// Go to first <box /> tag
+						p.next(); eventType = p.getEventType();
+						
+						// Stop at </grid> end tag
+						while (p.getName().equalsIgnoreCase("box"))
+						{
+							// See what type of tag it is and store it in the grid we just created
+							// Currently at <box ... />
+							attPosition = p.getAttributeValue(null, "pos");
+							attItem = p.getAttributeValue(null, "item");
+							if (attPosition != null && attItem != null)
+							{
+								if (attPosition.equalsIgnoreCase("ul")) currentItem.grid.ul = attItem;
+								else if (attPosition.equalsIgnoreCase("uc")) currentItem.grid.uc = attItem;
+								else if (attPosition.equalsIgnoreCase("ur")) currentItem.grid.ur = attItem;
+								else if (attPosition.equalsIgnoreCase("l")) currentItem.grid.l = attItem;
+								else if (attPosition.equalsIgnoreCase("c")) currentItem.grid.c = attItem;
+								else if (attPosition.equalsIgnoreCase("r")) currentItem.grid.r = attItem;
+								else if (attPosition.equalsIgnoreCase("ll")) currentItem.grid.ll = attItem;
+								else if (attPosition.equalsIgnoreCase("lc")) currentItem.grid.lc = attItem;
+								else if (attPosition.equalsIgnoreCase("lr")) currentItem.grid.lr = attItem;
+							}
+
+							// Move to next tag
+							p.next(); eventType = p.getEventType();
+						}
+					}
 					
 					// Move to next tag
 					p.next(); eventType = p.getEventType();
@@ -116,5 +153,14 @@ public class ItemDataManager
 			p.next(); eventType = p.getEventType();
 		}
 	};
+	
+	// Used to translate an item's display name to its image file name
+	// e.g. "Wood Planks" translates to "item_wood_planks"; used as R.id.item_wood_planks
+	static public String getImageFilename(String inName)
+	{
+		String fileName = inName.replace(' ', '_').toLowerCase(Locale.ENGLISH);
+		fileName = "item_" + fileName;
+		return fileName;
+	}
 	
 };

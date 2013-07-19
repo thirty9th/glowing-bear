@@ -67,6 +67,7 @@ public class ItemListAdapter extends ArrayAdapter<Ingredient>
 			
 			holder = new IngredientHolder();
 			holder.icon = (ImageView)row.findViewById(R.id.image_tab);
+			holder.item_icon = (ImageView)row.findViewById(R.id.image_item_icon);
 			holder.name = (TextView)row.findViewById(R.id.text_listview_item_name);
 			holder.quantity = (TextView)row.findViewById(R.id.text_listview_item_quantity);
 			holder.divider = (LinearLayout)row.findViewById(R.id.listview_item_divider);
@@ -78,10 +79,14 @@ public class ItemListAdapter extends ArrayAdapter<Ingredient>
 			holder = (IngredientHolder)row.getTag();
 		}
 		
-		// Set up icon, item name and quantity text fields
+		// Set up item name and quantity text fields
 		Ingredient ingredient = data.get(position);
 		holder.name.setText(ingredient.name);
 		holder.quantity.setText(ingredient.quantity);
+		
+		// Set item icon
+		String imageName = ItemDataManager.getImageFilename(data.get(position).name);
+		holder.item_icon.setImageResource(context.getResources().getIdentifier(imageName, "drawable", "com.example.minecraftapp"));
 		
 		// Set proper image for the item; if it has an open child, its icon should
 		// be open. If not, its icon should be closed
@@ -139,6 +144,7 @@ public class ItemListAdapter extends ArrayAdapter<Ingredient>
 	static class IngredientHolder
 	{
 		ImageView icon;
+		ImageView item_icon;
 		TextView name;
 		TextView quantity;
 		LinearLayout divider;

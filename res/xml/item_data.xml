@@ -10,32 +10,69 @@
 	    <recipe produced="4">
 	        <ingredient name="Wood" quantity="1" />
 	    </recipe>
+	    <grid>
+	        <box pos="c" item="Wood" />
+	    </grid>
 	</item>
 	<item name="Stick">
 	    <recipe produced="4">
 	        <ingredient name="Wood Planks" quantity="2" />
 	    </recipe>
+	    <grid>
+	        <box pos="c" item="Wood Planks" />
+	       	<box pos="lc" item="Wood Planks" />
+	    </grid>
 	</item>
 	<item name="Crafting Table">
 	    <recipe produced="1">
 	        <ingredient name="Wood Planks" quantity="4" />
 	    </recipe>
+	    <grid>
+	        <box pos="l" item="Wood Planks" />
+	       	<box pos="c" item="Wood Planks" />
+	       	<box pos="ll" item="Wood Planks" />
+	       	<box pos="lc" item="Wood Planks" />
+	    </grid>
 	</item>
 	<item name="Furnace">
 	    <recipe produced="1">
 	        <ingredient name="Cobblestone" quantity="8" />
 	    </recipe>
+	    <grid>
+	        <box pos="ul" item="Cobblestone" />
+	        <box pos="uc" item="Cobblestone" />
+	        <box pos="ur" item="Cobblestone" />
+	        <box pos="l" item="Cobblestone" />
+	        <box pos="r" item="Cobblestone" />
+	        <box pos="ll" item="Cobblestone" />
+	        <box pos="lc" item="Cobblestone" />
+	        <box pos="lr" item="Cobblestone" />
+	    </grid>
 	</item>
 	<item name="Chest">
 	    <recipe produced="1">
 	        <ingredient name="Wood Planks" quantity="8" />
 	    </recipe>
+	    <grid>
+	        <box pos="ul" item="Wood Planks" />
+	        <box pos="uc" item="Wood Planks" />
+	        <box pos="ur" item="Wood Planks" />
+	        <box pos="l" item="Wood Planks" />
+	        <box pos="r" item="Wood Planks" />
+	        <box pos="ll" item="Wood Planks" />
+	        <box pos="lc" item="Wood Planks" />
+	        <box pos="lr" item="Wood Planks" />
+	    </grid>
 	</item>
 	<item name="Torch">
 	    <recipe produced="4">
 	        <ingredient name="Coal" quantity="1" />
 	        <ingredient name="Stick" quantity="1" />
 	    </recipe>
+	    <grid>
+	        <box pos="c" item="Coal" />
+	       	<box pos="lc" item="Stick" />
+	    </grid>
 	</item>
 	
 	<!--  Manufactured Recipes -->
@@ -43,17 +80,40 @@
 	    <recipe produced="1">
 	        <ingredient name="Glowstone Dust" quantity="4" />
 	    </recipe>
+	    <grid>
+	        <box pos="l" item="Glowstone Dust" />
+	       	<box pos="c" item="Glowstone Dust" />
+	       	<box pos="ll" item="Glowstone Dust" />
+	       	<box pos="lc" item="Glowstone Dust" />
+	    </grid>
 	</item>
 	<item name="Wool">
 	    <recipe produced="1">
 	        <ingredient name="String" quantity="4" />
 	    </recipe>
+	    <grid>
+	        <box pos="l" item="String" />
+	       	<box pos="c" item="String" />
+	       	<box pos="ll" item="String" />
+	       	<box pos="lc" item="String" />
+	    </grid>
 	</item>
 	<item name="TNT">
 	    <recipe produced="1">
 	        <ingredient name="Gunpowder" quantity="5" />
 	        <ingredient name="Sand" quantity="4" />
 	    </recipe>
+	     <grid>
+	        <box pos="ul" item="Gunpowder" />
+	        <box pos="uc" item="Sand" />
+	        <box pos="ur" item="Gunpowder" />
+	        <box pos="l" item="Sand" />
+	        <box pos="c" item="Gunpowder" />
+	        <box pos="r" item="Sand" />
+	        <box pos="ll" item="Gunpowder" />
+	        <box pos="lc" item="Sand" />
+	        <box pos="lr" item="Gunpowder" />
+	    </grid>
 	</item>
 	<item name="Stone Slab">
 	    <recipe produced="6">
