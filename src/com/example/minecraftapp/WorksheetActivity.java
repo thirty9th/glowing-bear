@@ -294,7 +294,7 @@ public class WorksheetActivity extends Activity
 		
 		// Populate the list, mapping the name of the item to its proper view in the
 		// individual item layout (keeping hashmap -> simple adapter layout for extensibility)
-		ItemListAdapter adapter = new ItemListAdapter(this, R.layout.listview_item_items, itemList);
+		ItemListAdapter adapter = new ItemListAdapter(this, R.layout.listview_item_items, itemList, itemManager);
 		itemListview.setAdapter(adapter);
 		
 		// Scroll back to saved position

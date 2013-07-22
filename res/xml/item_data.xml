@@ -505,7 +505,7 @@
 	<item name="Detector Rail">
 	    <recipe produced="6">
 	        <ingredient name="Iron Ingot" quantity="6" />
-	        <ingredient name="Stone Presure Plate" quantity="1" />
+	        <ingredient name="Stone Pressure Plate" quantity="1" />
 	        <ingredient name="Redstone" quantity="1" />
 	    </recipe>
 	    <grid>
@@ -1647,19 +1647,19 @@
 	</item>
 	<item name="Enchanted Golden Apple">
 	    <recipe produced="1">
-	        <ingredient name="Gold Block" quantity="8" />
+	        <ingredient name="Block of Gold" quantity="8" />
 	        <ingredient name="Apple" quantity="1" />
 	    </recipe>
 	    <grid>
-	        <box pos="ul" item="Gold Block" />
-	        <box pos="uc" item="Gold Block" />
-	        <box pos="ur" item="Gold Block" />
-	        <box pos="l" item="Gold Block" />
+	        <box pos="ul" item="Block of Gold" />
+	        <box pos="uc" item="Block of Gold" />
+	        <box pos="ur" item="Block of Gold" />
+	        <box pos="l" item="Block of Gold" />
 	        <box pos="c" item="Apple" />
-	        <box pos="r" item="Gold Block" />
-	        <box pos="ll" item="Gold Block" />
-	        <box pos="lc" item="Gold Block" />
-	        <box pos="lr" item="Gold Block" />
+	        <box pos="r" item="Block of Gold" />
+	        <box pos="ll" item="Block of Gold" />
+	        <box pos="lc" item="Block of Gold" />
+	        <box pos="lr" item="Block of Gold" />
 	    </grid>
 	</item>
 	<item name="Melon Seeds">
@@ -2511,6 +2511,11 @@
 	<!-- Base items -->
 	<!-- Note: Uses the notation 'produced="0"' to indicate a base item,
 	that is, an item with no child ingredients -->
+	<item name="Iron Ingot">
+	    <recipe produced="0">
+	        <ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
 	<item name="Stone">
 	    <recipe produced="0">
 			<ingredient name="base_item" quantity="1" />

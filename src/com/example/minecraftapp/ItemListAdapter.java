@@ -32,9 +32,10 @@ public class ItemListAdapter extends ArrayAdapter<Ingredient>
 	List<Boolean> openTabStatus;
 	List<Boolean> bigDivider;
 	List<Integer> indentation;
+	ItemDataManager itemManager;
 	
 	// Constructor
-	public ItemListAdapter(Context inContext, int inId, List<Ingredient> inData)
+	public ItemListAdapter(Context inContext, int inId, List<Ingredient> inData, ItemDataManager inItemManager)
 	{
 		super(inContext, inId, inData);
 		this.id = inId;
@@ -45,11 +46,17 @@ public class ItemListAdapter extends ArrayAdapter<Ingredient>
 		
 		// Initialize the boolean array for setting the correct images and dividers
 		openTabStatus = new ArrayList<Boolean>();
-		for (int i = 0; i < inData.size(); i++) openTabStatus.add(false);
 		bigDivider = new ArrayList<Boolean>();
-		for (int i = 0; i < inData.size(); i++) bigDivider.add(false);
 		indentation = new ArrayList<Integer>();
-		for (int i = 0; i < inData.size(); i++) indentation.add(20);
+		for (int i = 0; i < inData.size(); i++)
+		{
+			openTabStatus.add(false);
+			bigDivider.add(false);
+			indentation.add(20);
+		}
+		
+		// Set item data manager
+		this.itemManager = inItemManager;
 	}
 	
 	// Implement the getView method from ArrayAdapter
@@ -101,8 +108,21 @@ public class ItemListAdapter extends ArrayAdapter<Ingredient>
 		else openTabStatus.set(position, false);
 		
 		// Now set image according to the boolean array (avoids view recycling pitfall)
-		if (openTabStatus.get(position)) holder.icon.setImageResource(R.drawable.icon_list_open);
-		else holder.icon.setImageResource(R.drawable.icon_list_closed);
+		String itemName = holder.name.getText().toString();
+		int index = itemManager.searchItem(itemName);
+		if (index != -1) 
+		{
+			CraftingItem targetItem = itemManager.itemList.get(index);
+			if (targetItem.recipes.get(0).ingredients.get(0).name.equalsIgnoreCase("base_item"))
+			{
+				holder.icon.setImageResource(R.drawable.icon_list_no_child);
+			}
+			else
+			{
+				if (openTabStatus.get(position)) holder.icon.setImageResource(R.drawable.icon_list_open);
+				else holder.icon.setImageResource(R.drawable.icon_list_closed);
+			}
+		}
 		
 		// Set the thick divider to separate distinct items and their children
 		if (position < data.size() - 1)
