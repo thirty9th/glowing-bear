@@ -7,72 +7,12 @@
     android:background="@color/white"
     tools:context=".MainActivity" >
 
-    <RelativeLayout
-        android1:id="@+id/relative_layout_main_titlebar"
-        android1:layout_width="match_parent"
-        android1:layout_height="wrap_content"
-        android1:background="@drawable/title_bar_gradient"
-        android1:paddingBottom="3dp"
-        android1:paddingLeft="@dimen/main_menu_padding"
-        android1:paddingRight="@dimen/main_menu_padding"
-        android1:paddingTop="3dp" >
-
-        <TextView
-            android1:id="@+id/text_main_titlebar"
-            android1:layout_width="wrap_content"
-            android1:layout_height="wrap_content"
-            android1:layout_alignParentLeft="true"
-            android1:layout_centerVertical="true"
-            android1:text="@string/worksheets_title"
-            android1:textAppearance="?android:attr/textAppearanceLarge"
-            android1:textColor="@color/white"
-            android1:textColorHint="@color/dark_grey" />
-
-        <LinearLayout
-            android1:layout_width="wrap_content"
-            android1:layout_height="wrap_content"
-            android1:layout_alignParentRight="true"
-            android1:layout_centerVertical="true"
-            android1:gravity="center" >
-
-            <ImageView
-                android1:id="@+id/imageView1"
-                android1:layout_width="wrap_content"
-                android1:layout_height="wrap_content"
-                android1:layout_marginRight="10dp"
-                android1:src="@drawable/vertical_rule" />
-
-            <ImageButton
-                android1:id="@+id/button_add_item"
-                android1:layout_width="25dp"
-                android1:layout_height="25dp"
-                android1:layout_weight="1"
-                android1:background="@null"
-                android1:contentDescription="@string/button_add_worksheet_des"
-                android1:onClick="onClickAddWorksheet"
-                android1:scaleType="fitCenter"
-                android1:src="@drawable/button_add_worksheet" />
-        </LinearLayout>
-
-    </RelativeLayout>
-
-    <LinearLayout
-        android1:id="@+id/rule_worksheets_top"
-        android1:layout_width="match_parent"
-        android1:layout_height="3dp"
-        android1:background="@color/listview_item_worksheets_divider"
-        android1:layout_below="@+id/relative_layout_main_titlebar"
-        android1:orientation="vertical" >
-
-    </LinearLayout>
-
     <ListView
         android1:id="@+id/list_worksheets"
         android1:layout_width="match_parent"
-        android1:layout_height="wrap_content"
-        android1:layout_alignParentBottom="true"
+        android1:layout_height="match_parent"
+        android1:layout_alignParentTop="true"
         android1:layout_alignParentLeft="true"
-        android1:layout_below="@+id/rule_worksheets_top"
         android1:divider="@null" >
 
     </ListView>

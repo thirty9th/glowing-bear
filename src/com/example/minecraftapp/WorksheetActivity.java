@@ -11,10 +11,13 @@ package com.example.minecraftapp;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 import org.xmlpull.v1.XmlPullParserException;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -22,18 +25,18 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.view.ActionMode;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AdapterView.OnItemLongClickListener;
+import android.widget.AbsListView.MultiChoiceModeListener;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -52,6 +55,7 @@ public class WorksheetActivity extends Activity
 	ErrorLogManager ELog;
 	String name;
 	ItemDataManager itemManager;
+	ItemListAdapter adapter;
 	List<Ingredient> itemList;
 
 	// Called when the activity is created
@@ -60,7 +64,7 @@ public class WorksheetActivity extends Activity
 	{
 		// Resume and set layout
 		super.onCreate(savedInstanceState);
-		this.requestWindowFeature(Window.FEATURE_NO_TITLE);	//Remove title bar
+		//this.requestWindowFeature(Window.FEATURE_NO_TITLE);	//Remove title bar
 		setContentView(R.layout.activity_worksheet);
 		
 		// Grab instancse of error log manager
@@ -103,6 +107,10 @@ public class WorksheetActivity extends Activity
         // Parse out the needed data from rawFileData and put it into the baseItems list
         loadItemList();
         loadItemListview();
+        
+        // Set up action bar icon to take user home when clicked
+        ActionBar ab = getActionBar();
+        ab.setDisplayHomeAsUpEnabled(true);
 	}
 	
 	// Called when app is stopped
@@ -183,7 +191,7 @@ public class WorksheetActivity extends Activity
 	}
 	
 	// Called when the user clicks the add item button
-	public void onClickAddItem(View view)
+	public void onClickAddItem()
 	{
 		// Set up and show a new alert dialog
 		AlertDialog.Builder b = new AlertDialog.Builder(this);
@@ -195,6 +203,8 @@ public class WorksheetActivity extends Activity
 		// TODO: Make sure the item names list is initialized before passing it to the
 		// adapter and build it if it's not
 		final AutoCompleteTextView itemName = (AutoCompleteTextView)v.findViewById(R.id.text_item_name);
+		final TextView itemQuantity = (TextView)v.findViewById(R.id.text_item_quantity);
+		itemQuantity.setText("1");
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, MainActivity.itemNamesList);
 		itemName.setAdapter(adapter);
 		
@@ -242,117 +252,116 @@ public class WorksheetActivity extends Activity
 		b.show();
 	}
 	
-	// Called when the user long-clicks an item for deletion
-	public void onDeleteItem(final int pos)
-	{
-		// Set up and show a new alert dialog
-		AlertDialog.Builder b = new AlertDialog.Builder(this);
-		View v = LayoutInflater.from(this).inflate(R.layout.dialog_delete_item, (ViewGroup)findViewById(R.id.dialog_delete_item_root));
-		b.setView(v);
-		b.setTitle(R.string.confirm_deletion);
-
-		// Set up the right (okay/positive) button
-		b.setPositiveButton(R.string.delete, new DialogInterface.OnClickListener()
-		{
-			public void onClick(DialogInterface dialog, int which)
-			{
-				// Delete the item and its open children from the list and re-load the listview
-				int originalLevel = itemList.get(pos).level;
-				itemList.remove(pos);
-				if (itemList.size() > 0 && pos < itemList.size())
-				{
-					int currentLevel = itemList.get(pos).level;
-					while (pos < itemList.size() && currentLevel > originalLevel)
-					{
-						itemList.remove(pos);
-						if (pos < itemList.size()) currentLevel = itemList.get(pos).level;
-					}
-				}
-				loadItemListview();
-			}
-		});
-
-		// Set up the left (no/negative) button
-		b.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener()
-		{
-			public void onClick(DialogInterface dialog, int which)
-			{
-				dialog.cancel();
-			}
-		});
-
-		// Show finished result
-		b.show();
-	}
-	
 	// Populates the listview from the list of items
 	// Note: uses hashmaps for extensibility... may add custom item icons later
-	private void loadItemListview()
+	public void loadItemListview()
 	{
 		// Save position in the list
 		Parcelable state = itemListview.onSaveInstanceState();
 		
 		// Populate the list, mapping the name of the item to its proper view in the
 		// individual item layout (keeping hashmap -> simple adapter layout for extensibility)
-		ItemListAdapter adapter = new ItemListAdapter(this, R.layout.listview_item_items, itemList, itemManager);
+		adapter = new ItemListAdapter(this, R.layout.listview_item_items, itemList, itemManager);
 		itemListview.setAdapter(adapter);
 		
 		// Scroll back to saved position
 		itemListview.onRestoreInstanceState(state);
 		
-		// Make each item in the populated list clickable
-		itemListview.setOnItemClickListener(new OnItemClickListener()
+		// Set up multi-selection and context menu interface for items
+		itemListview.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
+		itemListview.setMultiChoiceModeListener(new MultiChoiceModeListener()
 		{
-			  public void onItemClick(AdapterView<?> adapterView, View view, int pos, long id)
-			  {
-				  // Toggle visibility of the selected item's children
-				  if (pos < itemList.size() - 1)						// Not last item in the list
-				  {
-					  int currentLevel = itemList.get(pos).level;
-					  if (itemList.get(pos + 1).level > currentLevel)	// Item directly underneath is of lower precendence, hide children
-					  {
-						  while (itemList.get(pos + 1).level > currentLevel)
-						  {
-							  itemList.remove(pos + 1);
-							  if (pos == itemList.size() - 1)
-							  {
-								  loadItemListview();
-								  return;
-							  }
-						  }
-						  loadItemListview();
-					  }
-					  else
-					  {
-						  showChildren(pos);		// Item directly underneath is of equal or greater precedence, show children
-					  }
-				  }
-				  else								// Last item in the list
-				  {
-					  showChildren(pos);
-				  }
-			  }
-		});
-		
-		// Make each item also long-clickable for deletion
-		// TODO: add multi-select functionality for faster deletion
-		itemListview.setOnItemLongClickListener(new OnItemLongClickListener()
-		{
-			public boolean onItemLongClick(AdapterView<?> parent, View view, int pos, long id)
+			@Override
+			public void onItemCheckedStateChanged(ActionMode mode, int pos, long id, boolean checked)
 			{
-				// Create a dialog asking the user if they want to delete the selected item
-				// Note: The user should only be able to delete base items they added (level 0 items)
-				//if (itemList.get(pos).level == 0) onDeleteItem(pos);
-				openItemSubmenu(pos);
-				
+				ELog.toast("Item #" + Integer.toString(pos) + " is set to " + Boolean.toString(checked));
+				// Handle selecting an item
+				if (checked)
+				{
+					adapter.setNewSelection(pos, checked);				}
+				else
+				{
+					adapter.removeSelection(pos);
+				}
+			}
+
+			@Override
+			public boolean onActionItemClicked(ActionMode mode, MenuItem item)
+			{
+				switch(item.getItemId())
+				{
+				case R.id.menu_delete_selected_items:
+					deleteSelectedItems();
+					mode.finish();
+					break;
+				}
 				return false;
+			}
+
+			@Override
+			public void onDestroyActionMode(ActionMode mode)
+			{
+				// Called when the CAB is removed
+				adapter.clearSelection();
+				itemListview.setAdapter(adapter);
+			}
+
+			@Override
+			public boolean onPrepareActionMode(ActionMode mode, Menu menu)
+			{
+				return false;
+			}
+
+			@Override
+			public boolean onCreateActionMode(ActionMode mode, Menu menu)
+			{
+				// Inflate menu
+				MenuInflater inflater = mode.getMenuInflater();
+				inflater.inflate(R.menu.menu_items_cab, menu);
+				return true;
 			}
 		});
 	}
 	
-	// Adds the children of the target item to the item list and updates it (recursive)
-	private void showChildren(int targetIndex)
+	// Removes the selected items when the user hits delete
+	private void deleteSelectedItems()
 	{
+		Set<Integer> toDelete = adapter.getCheckedItems();
+		List<Integer> toDeleteList = new ArrayList<Integer>(toDelete);
+		Collections.sort(toDeleteList, Collections.reverseOrder());
+		
+		// Delete selected items and their open children
+		for (int i = 0; i < toDeleteList.size(); i++)
+		{
+			int pos = toDeleteList.get(i);
+			int originalLevel = itemList.get(pos).level;
+			itemList.remove(pos);
+			if (itemList.size() > 0 && pos < itemList.size())
+			{
+				int currentLevel = itemList.get(pos).level;
+				while (pos < itemList.size() && currentLevel > originalLevel)
+				{
+					itemList.remove(pos);
+					if (pos < itemList.size()) currentLevel = itemList.get(pos).level;
+				}
+			}
+		}
+		loadItemListview();
+	}
+	
+	// Adds the children of the target item to the item list and updates it (recursive)
+	public void showChildren(int targetIndex)
+	{
+		// First check for a special case; possible infinite loop between gold ingots and gold nuggets
+		if (itemList.get(targetIndex).name.equalsIgnoreCase("Gold Ingot") && targetIndex > 0)
+		{
+			if (itemList.get(targetIndex - 1).name.equalsIgnoreCase("Gold Nugget")) return;
+		}
+		else if (itemList.get(targetIndex).name.equalsIgnoreCase("Gold Nugget") && targetIndex > 0)
+		{
+			if (itemList.get(targetIndex - 1).name.equalsIgnoreCase("Gold Ingot")) return;
+		}
+		
 		// Grab desired ingredient and its recipe from item manager
 		Ingredient i = itemList.get(targetIndex);
 		int parentLevel = i.level;
@@ -380,50 +389,8 @@ public class WorksheetActivity extends Activity
 		}
 	}
 	
-	// Opens a small dialog prompting the user to either delete the selected item or open its recipe
-	// sheet
-	private void openItemSubmenu(final int pos)
-	{
-		// Set up a new dialog
-		View v = LayoutInflater.from(this).inflate(R.layout.dialog_item_submenu, (ViewGroup)findViewById(R.id.dialog_item_submenu_root));
-		TextView textDeleteItem = (TextView)v.findViewById(R.id.text_delete_item);
-		TextView textShowRecipe = (TextView)v.findViewById(R.id.text_show_recipe);
-		final AlertDialog dialog = new AlertDialog.Builder(this).setView(v).show();
-		
-		// If the item is not a base item, don't display the option for deletion
-		if (itemList.get(pos).level != 0)
-		{
-			textDeleteItem.setVisibility(View.GONE);
-			LinearLayout divider = (LinearLayout)v.findViewById(R.id.dialog_items_submenu_divider);
-			divider.setVisibility(View.GONE);
-		}
-		
-		// Set click listener on delete item option
-		if (itemList.get(pos).level == 0)
-		{
-			textDeleteItem.setOnClickListener(new View.OnClickListener()
-			{
-				public void onClick(View view)
-				{
-					dialog.dismiss();	// Dismiss the small submenu dialog
-					onDeleteItem(pos);	// Show the confirmation to delete the item
-				}
-			});
-		}
-		
-		// Set click listener on show recipe option
-		textShowRecipe.setOnClickListener(new View.OnClickListener()
-		{
-			public void onClick(View view)
-			{
-				dialog.dismiss();	// Dismiss the small submenu dialog
-				onShowRecipe(pos);	// Show crafting grid dialog
-			}
-		});
-	}
-	
 	// Shows the target recipe in the 3 x 3 crafting grid format with images
-	private void onShowRecipe(final int pos)
+	public void onShowRecipe(final int pos)
 	{
 		// Set up a new dialog
 		View v = LayoutInflater.from(this).inflate(R.layout.dialog_show_recipe, (ViewGroup)findViewById(R.id.dialog_show_recipe_root));
@@ -498,7 +465,47 @@ public class WorksheetActivity extends Activity
 		});
 		
 		// Show the resulting dialog
+		@SuppressWarnings("unused")
 		final AlertDialog dialog = b.setView(v).show();
+	}
+	
+	// Called when the user hits the menu softkey
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu)
+	{
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.menu_items, menu);
+		return true;
+	}
+
+	// Handle menu items being clicked
+	public boolean onOptionsItemSelected(MenuItem item)
+	{
+		switch(item.getItemId())
+		{
+		case R.id.menu_add_item:
+			onClickAddItem();
+			return true;
+		case R.id.menu_sort_items:
+			for (int i = 0; i < itemList.size(); i++)
+			{
+				while (itemList.get(i).level != 0)
+				{
+					itemList.remove(i);
+					if (i >= itemList.size()) break;
+				}
+			}
+			Collections.sort(itemList, new IngredientComparator());
+			loadItemListview();
+			ELog.toast("Sorted items alphabetically.");
+			return true;
+		case android.R.id.home:
+			finish();
+			return true;
+
+		default:
+			return super.onOptionsItemSelected(item); 
+		}
 	}
 	
 }

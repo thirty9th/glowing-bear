@@ -41,7 +41,7 @@ public class ItemDataManager
 		int insertIndex = searchItem(itemName);
 		
 		// Add the new recipe to the list of recipes for the target item
-		itemList.get(insertIndex).recipes.add(ingredientList);		
+		itemList.get(insertIndex).recipes.add(ingredientList);
 	}
 	
 	// Searches the list of crafting items for the target item, returning its index

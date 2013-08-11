@@ -87,7 +87,7 @@
 	       	<box pos="lc" item="Glowstone Dust" />
 	    </grid>
 	</item>
-	<item name="Wool">
+	<item name="White Wool">
 	    <recipe produced="1">
 	        <ingredient name="String" quantity="4" />
 	    </recipe>
@@ -183,6 +183,16 @@
 	        <box pos="ll" item="Block of Quartz" />
 	        <box pos="lc" item="Block of Quartz" />
 	        <box pos="lr" item="Block of Quartz" />
+	    </grid>
+	</item>
+	<item name="Wood Slab">
+	    <recipe produced="6">
+	        <item name="Wood Planks" quantity="3" />
+	    </recipe>
+	    <grid>
+	        <box pos="ll" item="Wood Planks" />
+	        <box pos="lc" item="Wood Planks" />
+	        <box pos="lr" item="Wood Planks" />
 	    </grid>
 	</item>
 	<item name="Wood Stairs">
@@ -512,7 +522,7 @@
 	        <box pos="ul" item="Iron Ingot" />
 	        <box pos="ur" item="Iron Ingot" />
 	        <box pos="l" item="Iron Ingot" />
-	        <box pos="c" item="Stone Presure Plate" />
+	        <box pos="c" item="Stone Pressure Plate" />
 	        <box pos="r" item="Iron Ingot" />
 	        <box pos="ll" item="Iron Ingot" />
 	        <box pos="lc" item="Redstone" />
@@ -959,12 +969,12 @@
 	<!-- Weapon recipes -->
 	<item name="Wooden Sword">
 	    <recipe produced="1">
-	        <ingredient name="Wooden Planks" quantity="2" />
+	        <ingredient name="Wood Planks" quantity="2" />
 	        <ingredient name="Stick" quantity="1" />
 	    </recipe>
 	    <grid>
-	        <box pos="uc" item="Wooden Planks" />
-	        <box pos="c" item="Wooden Planks" />
+	        <box pos="uc" item="Wood Planks" />
+	        <box pos="c" item="Wood Planks" />
 	        <box pos="lc" item="Stick" />
 	    </grid>
 	</item>
@@ -1018,12 +1028,12 @@
 	        <ingredient name="Stick" quantity="3" />
 	    </recipe>
 	    <grid>
-	        <box pos="uc" item="String" />
-	        <box pos="ur" item="Stick" />
-	        <box pos="l" item="String" />
-	        <box pos="r" item="Stick" />
-	        <box pos="lc" item="String" />
-	        <box pos="lr" item="Stick" />
+	        <box pos="uc" item="Stick" />
+	        <box pos="ur" item="String" />
+	        <box pos="l" item="Stick" />
+	        <box pos="r" item="String" />
+	        <box pos="lc" item="Stick" />
+	        <box pos="lr" item="String" />
 	    </grid>
 	</item>
 	<item name="Arrow">
@@ -1252,7 +1262,7 @@
 	<!-- Mechanism recipes -->
 	<item name="Trapdoor">
 	    <recipe produced="2">
-	        <ingredient name="Wood Planks" quantity="2" />
+	        <ingredient name="Wood Planks" quantity="6" />
 	    </recipe>
 	    <grid>
 	        <box pos="l" item="Wood Planks" />
@@ -1307,7 +1317,7 @@
 	        <box pos="c" item="Wood Planks" />
 	    </grid>
 	</item>
-	<item name="Button">
+	<item name="Stone Button">
 	    <recipe produced="1">
 	        <ingredient name="Stone" quantity="1" />
 	    </recipe>
@@ -1525,7 +1535,7 @@
 	        <box pos="lc" item="Iron Ingot" />
 	    </grid>
 	</item>
-	<item name="Redstone Repeator">
+	<item name="Redstone Repeater">
 	    <recipe produced="1">
 	        <ingredient name="Redstone Torch" quantity="2" />
 	        <ingredient name="Redstone" quantity="1" />
@@ -1595,7 +1605,7 @@
 	        <ingredient name="Sugar Cane" quantity="1" />
 	    </recipe>
 	    <grid>
-	        <box pos="lc" item="Sugar Can" />
+	        <box pos="lc" item="Sugar Cane" />
 	    </grid>
 	</item>
 	<item name="Cake">
@@ -1723,6 +1733,38 @@
 	        <box pos="lr" item="Gold Nugget" />
 	    </grid>
 	</item>
+	<item name="Steak">
+	    <recipe produced="1">
+	        <ingredient name="Raw Beef" quantity="1" />
+	    </recipe>
+	    <grid>
+	        <box pos="lc" item="Raw Beef" />
+	    </grid>
+	</item>
+	<item name="Cooked Porkchop">
+	    <recipe produced="1">
+	        <ingredient name="Raw Porkchop" quantity="1" />
+	    </recipe>
+	    <grid>
+	        <box pos="lc" item="Raw Porkchop" />
+	    </grid>
+	</item>
+	<item name="Cooked Chicken">
+	    <recipe produced="1">
+	        <ingredient name="Raw Chicken" quantity="1" />
+	    </recipe>
+	    <grid>
+	        <box pos="lc" item="Raw Chicken" />
+	    </grid>
+	</item>
+	<item name="Cooked Fish">
+	    <recipe produced="1">
+	        <ingredient name="Raw Fish" quantity="1" />
+	    </recipe>
+	    <grid>
+	        <box pos="lc" item="Raw Fish" />
+	    </grid>
+	</item>
 	
 	<!-- Miscellaneous recipes -->
 	<item name="Block of Gold">
@@ -1773,7 +1815,7 @@
 	        <box pos="lr" item="Diamond" />
 	    </grid>
 	</item>
-	<item name="Lapis Lazuli Block">
+	<item name="Block of Lapis Lazuli">
 	    <recipe produced="1">
 	        <ingredient name="Lapis Lazuli" quantity="9" />
 	    </recipe>
@@ -1956,7 +1998,7 @@
 	        <box pos="lr" item="Mossy Cobblestone" />
 	    </grid>
 	</item>
-	<item name="Melon Block">
+	<item name="Block of Melon">
 	    <recipe produced="1">
 	        <ingredient name="Melon" quantity="9" />
 	    </recipe>
@@ -1975,14 +2017,14 @@
 	<item name="Painting">
 	    <recipe produced="1">
 	        <ingredient name="Stick" quantity="8" />
-	        <ingredient name="Wool" quantity="1" />
+	        <ingredient name="White Wool" quantity="1" />
 	    </recipe>
 	    <grid>
 	        <box pos="ul" item="Stick" />
 	        <box pos="uc" item="Stick" />
 	        <box pos="ur" item="Stick" />
 	        <box pos="l" item="Stick" />
-	        <box pos="c" item="Wool" />
+	        <box pos="c" item="White Wool" />
 	        <box pos="r" item="Stick" />
 	        <box pos="ll" item="Stick" />
 	        <box pos="lc" item="Stick" />
@@ -2022,7 +2064,7 @@
 	    </grid>
 	</item>
 	<item name="Paper">
-	    <recipe produced="3">
+	    <recipe produced="1">
 	        <ingredient name="Sugar Cane" quantity="3" />
 	    </recipe>
 	    <grid>
@@ -2057,13 +2099,13 @@
 	</item>
 	<item name="Bed">
 	    <recipe produced="1">
-	        <ingredient name="Wool" quantity="3" />
+	        <ingredient name="White Wool" quantity="3" />
 	        <ingredient name="Wood Planks" quantity="3" />
 	    </recipe>
 	    <grid>
-	        <box pos="l" item="Wool" />
-	        <box pos="c" item="Wool" />
-	        <box pos="r" item="Wool" />
+	        <box pos="l" item="White Wool" />
+	        <box pos="c" item="White Wool" />
+	        <box pos="r" item="White Wool" />
 	        <box pos="ll" item="Wood Planks" />
 	        <box pos="lc" item="Wood Planks" />
 	        <box pos="lr" item="Wood Planks" />
@@ -2115,6 +2157,13 @@
 			<ingredient name="String" quantity="4" />
 			<ingredient name="Slimeball" quantity="1" />
 	    </recipe>
+	    <grid>
+	        <box pos="ul" item="string" />
+	        <box pos="uc" item="string" />
+	        <box pos="l" item="string" />
+	        <box pos="c" item="Slimeball" />
+	        <box pos="lr" item="string" />
+	    </grid>
 	</item>
 	<item name="Firework Rocket">
 	    <recipe produced="0">
@@ -2124,6 +2173,15 @@
 	    <grid>
 	        <box pos="c" item="Paper" />
 	        <box pos="lc" item="Gunpowder" />
+	    </grid>
+	</item>
+	<item name="Carpet">
+	    <recipe produced="3">
+	        <ingredient name="White Wool" quantity="2" />
+	    </recipe>
+	    <grid>
+	        <box pos="ll" item="White Wool" />
+	        <box pos="lc" item="White Wool" />
 	    </grid>
 	</item>
 	
@@ -2143,7 +2201,7 @@
 	    </recipe>
 	    <grid>
 	        <box pos="l" item="Bone Meal" />
-	        <box pos="lr" item="Ink Sac" />
+	        <box pos="ll" item="Ink Sac" />
 	        <box pos="lc" item="Bone Meal" />
 	    </grid>
 	</item>
@@ -2153,7 +2211,7 @@
 	        <ingredient name="Ink Sac" quantity="1" />
 	    </recipe>
 	    <grid>
-	        <box pos="lr" item="Ink Sac" />
+	        <box pos="ll" item="Ink Sac" />
 	        <box pos="lc" item="Bone Meal" />
 	    </grid>
 	</item>
@@ -2171,7 +2229,7 @@
 	        <ingredient name="Dandelion Yellow" quantity="1" />
 	    </recipe>
 	    <grid>
-	        <box pos="lr" item="Rose Red" />
+	        <box pos="ll" item="Rose Red" />
 	        <box pos="lc" item="Dandelion Yellow" />
 	    </grid>
 	</item>
@@ -2199,7 +2257,7 @@
 	        <ingredient name="Bone Meal" quantity="1" />
 	    </recipe>
 	    <grid>
-	        <box pos="lr" item="Lapis Lazuli" />
+	        <box pos="ll" item="Lapis Lazuli" />
 	        <box pos="lc" item="Bone Meal" />
 	    </grid>
 	</item>
@@ -2209,7 +2267,7 @@
 	        <ingredient name="Cactus Green" quantity="1" />
 	    </recipe>
 	    <grid>
-	        <box pos="lr" item="Lapis Lazuli" />
+	        <box pos="ll" item="Lapis Lazuli" />
 	        <box pos="lc" item="Cactus Green" />
 	    </grid>
 	</item>
@@ -2219,7 +2277,7 @@
 	        <ingredient name="Rose Red" quantity="1" />
 	    </recipe>
 	    <grid>
-	        <box pos="lr" item="Lapis Lazuli" />
+	        <box pos="ll" item="Lapis Lazuli" />
 	        <box pos="lc" item="Rose Red" />
 	    </grid>
 	</item>
@@ -2242,7 +2300,7 @@
 	        <ingredient name="Rose Red" quantity="1" />
 	    </recipe>
 	    <grid>
-	        <box pos="lr" item="Rose Red" />
+	        <box pos="ll" item="Rose Red" />
 	        <box pos="lc" item="Bone Meal" />
 	    </grid>
 	</item>
@@ -2250,151 +2308,151 @@
 	<!-- Wool recipes -->
 	<item name="Light Gray Wool">
 	    <recipe produced="1">
-	        <ingredient name="Wool" quantity="1" />
+	        <ingredient name="White Wool" quantity="1" />
 	        <ingredient name="Light Gray Dye" quantity="1" />
 	    </recipe>
 	    <grid>
-	        <box pos="lr" item="Wool" />
+	        <box pos="lr" item="White Wool" />
 	        <box pos="lc" item="Light Gray Dye" />
 	    </grid>
 	</item>
 	<item name="Gray Wool">
 	    <recipe produced="1">
-	        <ingredient name="Wool" quantity="1" />
+	        <ingredient name="White Wool" quantity="1" />
 	        <ingredient name="Gray Dye" quantity="1" />
 	    </recipe>
 	    <grid>
-	        <box pos="lr" item="Wool" />
+	        <box pos="lr" item="White Wool" />
 	        <box pos="lc" item="Gray Dye" />
 	    </grid>
 	</item>
 	<item name="Black Wool">
 	    <recipe produced="1">
-	        <ingredient name="Wool" quantity="1" />
+	        <ingredient name="White Wool" quantity="1" />
 	        <ingredient name="Ink Sac" quantity="1" />
 	    </recipe>
 	    <grid>
-	        <box pos="lr" item="Wool" />
+	        <box pos="lr" item="White Wool" />
 	        <box pos="lc" item="Ink Sac" />
 	    </grid>
 	</item>
 	<item name="Red Wool">
 	    <recipe produced="1">
-	        <ingredient name="Wool" quantity="1" />
+	        <ingredient name="White Wool" quantity="1" />
 	        <ingredient name="Rose Red" quantity="1" />
 	    </recipe>
 	    <grid>
-	        <box pos="lr" item="Wool" />
+	        <box pos="lr" item="White Wool" />
 	        <box pos="lc" item="Rose Red" />
 	    </grid>
 	</item>
 	<item name="Orange Wool">
 	    <recipe produced="1">
-	        <ingredient name="Wool" quantity="1" />
+	        <ingredient name="White Wool" quantity="1" />
 	        <ingredient name="Orange Dye" quantity="1" />
 	    </recipe>
 	    <grid>
-	        <box pos="lr" item="Wool" />
+	        <box pos="lr" item="White Wool" />
 	        <box pos="lc" item="Orange Dye" />
 	    </grid>
 	</item>
 	<item name="Yellow Wool">
 	    <recipe produced="1">
-	        <ingredient name="Wool" quantity="1" />
+	        <ingredient name="White Wool" quantity="1" />
 	        <ingredient name="Dandelion Yellow" quantity="1" />
 	    </recipe>
 	    <grid>
-	        <box pos="lr" item="Wool" />
+	        <box pos="lr" item="White Wool" />
 	        <box pos="lc" item="Dandelion Yellow" />
 	    </grid>
 	</item>
 	<item name="Lime Wool">
 	    <recipe produced="1">
-	        <ingredient name="Wool" quantity="1" />
+	        <ingredient name="White Wool" quantity="1" />
 	        <ingredient name="Lime Dye" quantity="1" />
 	    </recipe>
 	    <grid>
-	        <box pos="lr" item="Wool" />
+	        <box pos="lr" item="White Wool" />
 	        <box pos="lc" item="Lime Dye" />
 	    </grid>
 	</item>
 	<item name="Green Wool">
 	    <recipe produced="1">
-	        <ingredient name="Wool" quantity="1" />
+	        <ingredient name="White Wool" quantity="1" />
 	        <ingredient name="Cactus Green" quantity="1" />
 	    </recipe>
 	    <grid>
-	        <box pos="lr" item="Wool" />
+	        <box pos="lr" item="White Wool" />
 	        <box pos="lc" item="Cactus Green" />
 	    </grid>
 	</item>
 	<item name="Cyan Wool">
 	    <recipe produced="1">
-	        <ingredient name="Wool" quantity="1" />
+	        <ingredient name="White Wool" quantity="1" />
 	        <ingredient name="Cyan Dye" quantity="1" />
 	    </recipe>
 	    <grid>
-	        <box pos="lr" item="Wool" />
+	        <box pos="lr" item="White Wool" />
 	        <box pos="lc" item="Cyan Dye" />
 	    </grid>
 	</item>
 	<item name="Light Blue Wool">
 	    <recipe produced="1">
-	        <ingredient name="Wool" quantity="1" />
+	        <ingredient name="White Wool" quantity="1" />
 	        <ingredient name="Light Blue Dye" quantity="1" />
 	    </recipe>
 	    <grid>
-	        <box pos="lr" item="Wool" />
+	        <box pos="lr" item="White Wool" />
 	        <box pos="lc" item="Light Blue Dye" />
 	    </grid>
 	</item>
 	<item name="Blue Wool">
 	    <recipe produced="1">
-	        <ingredient name="Wool" quantity="1" />
+	        <ingredient name="White Wool" quantity="1" />
 	        <ingredient name="Lapis Lazuli" quantity="1" />
 	    </recipe>
 	    <grid>
-	        <box pos="lr" item="Wool" />
+	        <box pos="lr" item="White Wool" />
 	        <box pos="lc" item="Lapis Lazuli" />
 	    </grid>
 	</item>
 	<item name="Purple Wool">
 	    <recipe produced="1">
-	        <ingredient name="Wool" quantity="1" />
+	        <ingredient name="White Wool" quantity="1" />
 	        <ingredient name="Purple Dye" quantity="1" />
 	    </recipe>
 	    <grid>
-	        <box pos="lr" item="Wool" />
+	        <box pos="lr" item="White Wool" />
 	        <box pos="lc" item="Purple Dye" />
 	    </grid>
 	</item>
 	<item name="Magenta Wool">
 	    <recipe produced="1">
-	        <ingredient name="Wool" quantity="1" />
+	        <ingredient name="White Wool" quantity="1" />
 	        <ingredient name="Magenta Dye" quantity="1" />
 	    </recipe>
 	    <grid>
-	        <box pos="lr" item="Wool" />
+	        <box pos="lr" item="White Wool" />
 	        <box pos="lc" item="Magenta Dye" />
 	    </grid>
 	</item>
 	<item name="Pink Wool">
 	    <recipe produced="1">
-	        <ingredient name="Wool" quantity="1" />
+	        <ingredient name="White Wool" quantity="1" />
 	        <ingredient name="Pink Dye" quantity="1" />
 	    </recipe>
 	    <grid>
-	        <box pos="lr" item="Wool" />
+	        <box pos="lr" item="White Wool" />
 	        <box pos="lc" item="Pink Dye" />
 	    </grid>
 	</item>
 	<item name="Brown Wool">
 	    <recipe produced="1">
-	        <ingredient name="Wool" quantity="1" />
+	        <ingredient name="White Wool" quantity="1" />
 	        <ingredient name="Cocoa Beans" quantity="1" />
 	    </recipe>
 	    <grid>
-	        <box pos="lr" item="Wool" />
+	        <box pos="lr" item="White Wool" />
 	        <box pos="lc" item="Cocoa Beans" />
 	    </grid>
 	</item>
@@ -2656,11 +2714,6 @@
 			<ingredient name="base_item" quantity="1" />
 	    </recipe>
 	</item>
-	<item name="Glowstone">
-	    <recipe produced="0">
-			<ingredient name="base_item" quantity="1" />
-	    </recipe>
-	</item>
 	<item name="Brown Mushroom">
 	    <recipe produced="0">
 			<ingredient name="base_item" quantity="1" />
@@ -2781,11 +2834,6 @@
 			<ingredient name="base_item" quantity="1" />
 	    </recipe>
 	</item>
-	<item name="Cooked Porkchop">
-	    <recipe produced="0">
-			<ingredient name="base_item" quantity="1" />
-	    </recipe>
-	</item>
 	<item name="Saddle">
 	    <recipe produced="0">
 			<ingredient name="base_item" quantity="1" />
@@ -2807,11 +2855,6 @@
 	    </recipe>
 	</item>
 	<item name="Milk">
-	    <recipe produced="0">
-			<ingredient name="base_item" quantity="1" />
-	    </recipe>
-	</item>
-	<item name="Clay">
 	    <recipe produced="0">
 			<ingredient name="base_item" quantity="1" />
 	    </recipe>
@@ -2841,17 +2884,7 @@
 			<ingredient name="base_item" quantity="1" />
 	    </recipe>
 	</item>
-	<item name="Cooked Fish">
-	    <recipe produced="0">
-			<ingredient name="base_item" quantity="1" />
-	    </recipe>
-	</item>
 	<item name="Bone">
-	    <recipe produced="0">
-			<ingredient name="base_item" quantity="1" />
-	    </recipe>
-	</item>
-	<item name="Melon">
 	    <recipe produced="0">
 			<ingredient name="base_item" quantity="1" />
 	    </recipe>
@@ -2861,17 +2894,12 @@
 			<ingredient name="base_item" quantity="1" />
 	    </recipe>
 	</item>
-	<item name="Steak">
+	<item name="Apple">
 	    <recipe produced="0">
 			<ingredient name="base_item" quantity="1" />
 	    </recipe>
 	</item>
 	<item name="Raw Chicken">
-	    <recipe produced="0">
-			<ingredient name="base_item" quantity="1" />
-	    </recipe>
-	</item>
-	<item name="Cooked Chicken">
 	    <recipe produced="0">
 			<ingredient name="base_item" quantity="1" />
 	    </recipe>
@@ -3004,6 +3032,16 @@
 	<item name="Diamond Horse Armor">
 	    <recipe produced="0">
 			<ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Rose">
+	    <recipe produced="0">
+	        <ingredient name="base_item" quantity="1" />
+	    </recipe>
+	</item>
+	<item name="Dandelion">
+	    <recipe produced="0">
+	        <ingredient name="base_item" quantity="1" />
 	    </recipe>
 	</item>
 	

@@ -30,7 +30,8 @@
                 android:background="@color/grid_background"
                 android:contentDescription="@string/image_grid_item_des"
                 android:minHeight="@dimen/item_icon_size"
-                android:minWidth="@dimen/item_icon_size" >
+                android:minWidth="@dimen/item_icon_size"
+                android:padding="@dimen/item_frame_padding" >
 
                 <ImageView
                     android:id="@+id/layout_grid_row1_image1"
@@ -49,7 +50,8 @@
                 android:layout_marginLeft="@dimen/main_menu_padding"
                 android:background="@color/grid_background"
                 android:minHeight="@dimen/item_icon_size"
-                android:minWidth="@dimen/item_icon_size" >
+                android:minWidth="@dimen/item_icon_size"
+                android:padding="@dimen/item_frame_padding" >
 
                 <ImageView
                     android:id="@+id/layout_grid_row1_image2"
@@ -69,7 +71,8 @@
                 android:layout_marginLeft="@dimen/main_menu_padding"
                 android:background="@color/grid_background"
                 android:minHeight="@dimen/item_icon_size"
-                android:minWidth="@dimen/item_icon_size" >
+                android:minWidth="@dimen/item_icon_size"
+                android:padding="@dimen/item_frame_padding" >
 
                 <ImageView
                     android:id="@+id/layout_grid_row1_image3"
@@ -97,7 +100,8 @@
                 android:layout_height="wrap_content"
                 android:background="@color/grid_background"
                 android:minHeight="@dimen/item_icon_size"
-                android:minWidth="@dimen/item_icon_size" >
+                android:minWidth="@dimen/item_icon_size"
+                android:padding="@dimen/item_frame_padding" >
 
                 <ImageView
                     android:id="@+id/layout_grid_row2_image1"
@@ -117,7 +121,8 @@
                 android:layout_marginLeft="@dimen/main_menu_padding"
                 android:background="@color/grid_background"
                 android:minHeight="@dimen/item_icon_size"
-                android:minWidth="@dimen/item_icon_size" >
+                android:minWidth="@dimen/item_icon_size"
+                android:padding="@dimen/item_frame_padding" >
 
                 <ImageView
                     android:id="@+id/layout_grid_row2_image2"
@@ -137,7 +142,8 @@
                 android:layout_marginLeft="@dimen/main_menu_padding"
                 android:background="@color/grid_background"
                 android:minHeight="@dimen/item_icon_size"
-                android:minWidth="@dimen/item_icon_size" >
+                android:minWidth="@dimen/item_icon_size"
+                android:padding="@dimen/item_frame_padding" >
 
                 <ImageView
                     android:id="@+id/layout_grid_row2_image3"
@@ -166,7 +172,8 @@
                 android:layout_height="wrap_content"
                 android:background="@color/grid_background"
                 android:minHeight="@dimen/item_icon_size"
-                android:minWidth="@dimen/item_icon_size" >
+                android:minWidth="@dimen/item_icon_size"
+                android:padding="@dimen/item_frame_padding" >
 
                 <ImageView
                     android:id="@+id/layout_grid_row3_image1"
@@ -186,7 +193,8 @@
                 android:layout_marginLeft="@dimen/main_menu_padding"
                 android:background="@color/grid_background"
                 android:minHeight="@dimen/item_icon_size"
-                android:minWidth="@dimen/item_icon_size" >
+                android:minWidth="@dimen/item_icon_size"
+                android:padding="@dimen/item_frame_padding" >
 
                 <ImageView
                     android:id="@+id/layout_grid_row3_image2"
@@ -206,7 +214,8 @@
                 android:layout_marginLeft="@dimen/main_menu_padding"
                 android:background="@color/grid_background"
                 android:minHeight="@dimen/item_icon_size"
-                android:minWidth="@dimen/item_icon_size" >
+                android:minWidth="@dimen/item_icon_size"
+                android:padding="@dimen/item_frame_padding" >
 
                 <ImageView
                     android:id="@+id/layout_grid_row3_image3"

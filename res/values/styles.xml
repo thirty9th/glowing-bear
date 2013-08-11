@@ -28,5 +28,6 @@
     <color name="blue">#0000FF</color>
     <color name="green">#00FF00</color>
     <color name="grid_background">#8B8B8B</color>
+    <color name="listview_item_highlight">#275197</color>
 
 </resources>

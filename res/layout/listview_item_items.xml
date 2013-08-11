@@ -10,17 +10,27 @@
         android:layout_width="match_parent"
         android:layout_height="65dp"
         android:background="@color/dark_grey"
-        android:padding="@dimen/main_menu_padding" >
+        android:gravity="left" >
 
-        <ImageView
-            android:id="@+id/image_tab"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+        <LinearLayout
+            android:id="@+id/layout_tab_container"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:contentDescription="@string/listview_item_worksheets_icon_des"
-            android:scaleType="fitCenter"
-            android:src="@drawable/icon_list_closed" />
+            android:background="@color/super_dark_grey"
+            android:padding="@dimen/main_menu_padding" >
+
+            <ImageView
+                android:id="@+id/image_tab"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:contentDescription="@string/listview_item_worksheets_icon_des"
+                android:scaleType="fitCenter"
+                android:src="@drawable/icon_list_closed" />
+
+        </LinearLayout>
 
         <RelativeLayout
             android:id="@+id/layout_item_icon_frame"
@@ -28,9 +38,10 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/main_menu_padding"
-            android:layout_toRightOf="@+id/image_tab"
+            android:layout_toRightOf="@+id/layout_tab_container"
             android:background="@color/grid_background"
-            android:padding="2dp" >
+            android:gravity="left"
+            android:padding="@dimen/item_frame_padding" >
 
             <ImageView
                 android:id="@+id/image_item_icon"
@@ -38,7 +49,6 @@
                 android:layout_height="@dimen/item_icon_size"
                 android:contentDescription="@string/item_icon_des"
                 android:src="@null" />
-
         </RelativeLayout>
 
         <LinearLayout
@@ -54,6 +64,7 @@
                 android:id="@+id/text_listview_item_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="left"
                 android:text="@string/placeholder"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@color/white"
@@ -68,6 +79,7 @@
                     android:id="@+id/textView1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="left"
                     android:text="@string/quantity_identifier"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="@color/white" />
@@ -76,12 +88,23 @@
                     android:id="@+id/text_listview_item_quantity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="left"
                     android:text="@string/placeholder"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="@color/white" />
+
             </LinearLayout>
         </LinearLayout>
 
+        <ImageView
+            android:id="@+id/button_show_recipe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/main_menu_padding"
+            android:contentDescription="@string/show_recipe_button_des"
+            android:src="@drawable/icon_show_recipe" />
     </RelativeLayout>
 
     <LinearLayout

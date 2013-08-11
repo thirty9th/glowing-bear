@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    
+	<item android:id="@+id/menu_add_item"
+	    android:title="@string/menu_add_item"
+	    android:showAsAction="ifRoom"
+	    android:icon="@drawable/button_add_worksheet_small" />
+	<item android:id="@+id/menu_sort_items"
+	    android:title="@string/menu_sort_items"
+	    android:showAsAction="ifRoom"
+	    android:icon="@drawable/icon_sort" />
+    
+</menu>

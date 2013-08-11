@@ -22,25 +22,22 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity
 {
 
 	// Views to be instantiated
-	ListView worksheetListView;
-	TextView worksheetTitleText;
-	
+	ListView worksheetListView;	
 	// Globals
 	ItemDataManager itemManager;
 	List<String> worksheetList;
@@ -54,13 +51,11 @@ public class MainActivity extends Activity
 	{
 		// Set layout
 		super.onCreate(savedInstanceState);
-		this.requestWindowFeature(Window.FEATURE_NO_TITLE);	//Remove title bar
+		//this.requestWindowFeature(Window.FEATURE_NO_TITLE);	//Remove title bar
 		setContentView(R.layout.activity_main);
 		
 		// Instantiate views
-		worksheetListView = (ListView)findViewById(R.id.list_worksheets);
-		worksheetTitleText = (TextView)findViewById(R.id.text_main_titlebar);
-		
+		worksheetListView = (ListView)findViewById(R.id.list_worksheets);		
 		// Create the item data manager and pull items from XML file
 		itemManager = new ItemDataManager();
 		try
@@ -82,9 +77,8 @@ public class MainActivity extends Activity
 		// worksheets from file
 		fileManager = new FileManager(this);
 		worksheetList = fileManager.listFiles(fileManager.WORKSHEET_DATA_DIRECTORY);
-		loadWorksheetListview();			// Add worksheets from the above list to the actual view
-		updateWorksheetCount();				// Update count of worksheets displayed on the titlebar
-	
+		Collections.sort(worksheetList);
+		loadWorksheetListview();			// Add worksheets from the above list to the actual view	
 		// Load the names of all the items
 		// These are used for auto-complete boxes in various activities
 		loadItemNamesArray();
@@ -101,7 +95,7 @@ public class MainActivity extends Activity
 	}
 	
 	// Called when the user hits the add worksheet button
-	public void onClickAddWorksheet(View view)
+	public void onClickAddWorksheet()
 	{
 		// Set up and show a new alert dialog
 		AlertDialog.Builder b = new AlertDialog.Builder(this);
@@ -128,7 +122,6 @@ public class MainActivity extends Activity
 						fileManager.writeLinesToFile(new ArrayList<String>(), name, fileManager.WORKSHEET_DATA_DIRECTORY);
 						worksheetList = fileManager.listFiles(fileManager.WORKSHEET_DATA_DIRECTORY);
 						Collections.sort(worksheetList);
-						updateWorksheetCount();
 						loadWorksheetListview();
 					}
 					else ELog.toast("Error", "Duplicate name of existing worksheet");
@@ -169,9 +162,7 @@ public class MainActivity extends Activity
 				fileManager.deleteFile(name, fileManager.WORKSHEET_DATA_DIRECTORY);
 				worksheetList = fileManager.listFiles(fileManager.WORKSHEET_DATA_DIRECTORY);
 				Collections.sort(worksheetList);
-				loadWorksheetListview();
-				updateWorksheetCount();
-			}
+				loadWorksheetListview();			}
 		});
 
 		// Set up the left (no/negative) button
@@ -244,14 +235,22 @@ public class MainActivity extends Activity
 	public boolean onCreateOptionsMenu(Menu menu)
 	{
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
+		getMenuInflater().inflate(R.menu.menu_worksheets, menu);
 		return true;
 	}
 	
-	// Sets the worksheet count next to the title
-	private void updateWorksheetCount()
+	// Handle menu items being clicked
+	public boolean onOptionsItemSelected(MenuItem item)
 	{
-		worksheetTitleText.setText("Worksheets (" + worksheetList.size() + ")");
+		switch(item.getItemId())
+		{
+		case R.id.menu_add_worksheet:
+			onClickAddWorksheet();
+			return true;
+			
+		default:
+				return super.onOptionsItemSelected(item); 
+		}
 	}
 	
 	// Loads all item names into an array of strings for auto complete adapters
