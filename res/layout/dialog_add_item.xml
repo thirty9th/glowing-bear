@@ -10,10 +10,9 @@
         android:id="@+id/text_item_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
         android:hint="@string/dialog_add_item_prompt"
-        android:textColor="@color/super_dark_grey"
-        android:inputType="textCapWords" >
+        android:inputType="textCapWords"
+        android:textColor="@color/super_dark_grey" >
 
         <requestFocus />
     </AutoCompleteTextView>
@@ -22,7 +21,6 @@
         android:id="@+id/text_item_quantity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
         android:hint="@string/dialog_add_item_quantity_prompt"
         android:inputType="number"
         android:textColor="@color/super_dark_grey" />

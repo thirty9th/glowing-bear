@@ -6,7 +6,7 @@
  * 
  */
 
-package com.example.minecraftapp;
+package com.thirtyninthsoftware.minebutler;
 
 public class Ingredient
 {

@@ -6,7 +6,7 @@
  * 
  */
 
-package com.example.minecraftapp;
+package com.thirtyninthsoftware.minebutler;
 
 import java.util.ArrayList;
 import java.util.List;

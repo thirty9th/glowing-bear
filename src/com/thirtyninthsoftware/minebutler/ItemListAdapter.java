@@ -6,12 +6,14 @@
  * 
  */
 
-package com.example.minecraftapp;
+package com.thirtyninthsoftware.minebutler;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
+
+import com.thirtyninthsoftware.minebutler.R;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -21,7 +23,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -110,7 +111,7 @@ public class ItemListAdapter extends ArrayAdapter<Ingredient>
 		
 		// Set item icon
 		String imageName = ItemDataManager.getImageFilename(data.get(position).name);
-		holder.item_icon.setImageResource(context.getResources().getIdentifier(imageName, "drawable", "com.example.minecraftapp"));
+		holder.item_icon.setImageResource(context.getResources().getIdentifier(imageName, "drawable", context.getPackageName()));
 		
 		// Set proper image for the item; if it has an open child, its icon should
 		// be open. If not, its icon should be closed
@@ -236,7 +237,7 @@ public class ItemListAdapter extends ArrayAdapter<Ingredient>
 		// Set indentation of the item's view according to its child status
 		if (ingredient.level > 0)
 		{
-			indentation.set(position, (ingredient.level * 35));
+			indentation.set(position, (ingredient.level * 15));
 		}
 		holder.background.setPadding(indentation.get(position), 0, 0, 0);
 		

@@ -5,7 +5,7 @@
  * 
  */
 
-package com.example.minecraftapp;
+package com.thirtyninthsoftware.minebutler;
 
 import java.util.Comparator;
 

@@ -6,7 +6,7 @@
  * 
  */
 
-package com.example.minecraftapp;
+package com.thirtyninthsoftware.minebutler;
 
 import android.content.Context;
 import android.widget.Toast;

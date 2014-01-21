@@ -7,7 +7,7 @@
  * 
  */
 
-package com.example.minecraftapp;
+package com.thirtyninthsoftware.minebutler;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,6 +21,7 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -40,6 +41,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.thirtyninthsoftware.minebutler.R;
 
 public class WorksheetActivity extends Activity
 {
@@ -57,6 +59,7 @@ public class WorksheetActivity extends Activity
 	ItemDataManager itemManager;
 	ItemListAdapter adapter;
 	List<Ingredient> itemList;
+	public static final String FILE_SHARED_PREFERENCES = "PREFERENCES";
 
 	// Called when the activity is created
 	@Override
@@ -111,6 +114,17 @@ public class WorksheetActivity extends Activity
         // Set up action bar icon to take user home when clicked
         ActionBar ab = getActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
+        
+        // See if we need to show the user the first time dialog explaining basic features
+        boolean initialRun = getSharedPreferences(FILE_SHARED_PREFERENCES, MODE_PRIVATE).getBoolean("initialRunWorksheet", true);
+        if (initialRun)
+        {
+        	// Show our dialog
+        	showWelcomeDialog();
+
+        	// Don't show dialog again
+        	getSharedPreferences(FILE_SHARED_PREFERENCES, MODE_PRIVATE).edit().putBoolean("initialRunWorksheet", false).commit();
+        }
 	}
 	
 	// Called when app is stopped
@@ -119,20 +133,8 @@ public class WorksheetActivity extends Activity
 	{
 		super.onStop();
 		
-		// Build a list of lines to write to file
-		// A line is formatted as: <name of item> <quantity of item>
-		// File manager takes care of end-of-line characters
-		List <String> linesToWrite = new ArrayList<String>();
-		for (int i = 0; i < itemList.size(); i++)
-		{
-			Ingredient thisIngredient = itemList.get(i);
-			String thisName = thisIngredient.name;
-			String thisQuantity = thisIngredient.quantity;
-			int thisLevel = thisIngredient.level;
-			linesToWrite.add(thisName + "-" + thisQuantity + "-" + thisLevel);
-		}
-		
-		fileManager.writeLinesToFile(linesToWrite, name, fileManager.WORKSHEET_DATA_DIRECTORY);
+		// Save items
+		saveItemsToFile();
 	}
 	
 	// Called when app is paused
@@ -141,20 +143,8 @@ public class WorksheetActivity extends Activity
 	{
 		super.onPause();
 		
-		// Build a list of lines to write to file
-		// A line is formatted as: <name of item> <quantity of item>
-		// File manager takes care of end-of-line characters
-		List <String> linesToWrite = new ArrayList<String>();
-		for (int i = 0; i < itemList.size(); i++)
-		{
-			Ingredient thisIngredient = itemList.get(i);
-			String thisName = thisIngredient.name;
-			String thisQuantity = thisIngredient.quantity;
-			int thisLevel = thisIngredient.level;
-			linesToWrite.add(thisName + "-" + thisQuantity + "-" + thisLevel);
-		}
-		
-		fileManager.writeLinesToFile(linesToWrite, name, fileManager.WORKSHEET_DATA_DIRECTORY);
+		// Save items
+		saveItemsToFile();
 	}
 	
 	// Called when app is resumed
@@ -203,8 +193,6 @@ public class WorksheetActivity extends Activity
 		// TODO: Make sure the item names list is initialized before passing it to the
 		// adapter and build it if it's not
 		final AutoCompleteTextView itemName = (AutoCompleteTextView)v.findViewById(R.id.text_item_name);
-		final TextView itemQuantity = (TextView)v.findViewById(R.id.text_item_quantity);
-		itemQuantity.setText("1");
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, MainActivity.itemNamesList);
 		itemName.setAdapter(adapter);
 		
@@ -221,16 +209,13 @@ public class WorksheetActivity extends Activity
 				// NOTE: Third parameter indicates the item's hierarchy level; a level of 0 is a parent item added by the user
 				// Items with levels of 1 indicate children of level 0 items and so forth
 				// Check for errors in input before attempting to add the item
-				if (quantity.length() <= 0)
-				{
-					ELog.toast("Error", "Quantity field left blank");
-					return;
-				}
+				if (quantity.length() <= 0) quantity = "1";		// Quantity defaults to 1 if user forgets to enter it
 				if (Integer.parseInt(quantity) < 10000 && Integer.parseInt(quantity) > 0)
 				{
 					if (itemManager.searchItem(name) != -1)
 					{
 						itemList.add(new Ingredient(quantity, name, 0));
+						saveItemsToFile();
 						loadItemListview();
 					}
 					else ELog.toast("Error", "Requested item not found");
@@ -274,7 +259,6 @@ public class WorksheetActivity extends Activity
 			@Override
 			public void onItemCheckedStateChanged(ActionMode mode, int pos, long id, boolean checked)
 			{
-				ELog.toast("Item #" + Integer.toString(pos) + " is set to " + Boolean.toString(checked));
 				// Handle selecting an item
 				if (checked)
 				{
@@ -346,6 +330,9 @@ public class WorksheetActivity extends Activity
 				}
 			}
 		}
+		
+		// Save items to file and update the listview
+		saveItemsToFile();
 		loadItemListview();
 	}
 	
@@ -405,53 +392,63 @@ public class WorksheetActivity extends Activity
 		ImageView imageLR = (ImageView)v.findViewById(R.id.layout_grid_row3_image3);
 		
 		// Load proper images into the grid squares
+		int resId;
 		int index = itemManager.searchItem(itemList.get(pos).name);
 		CraftingItem thisItem = itemManager.itemList.get(index);
 		CraftingGrid grid = thisItem.grid;
 		if (grid.ul != null)	// Here we are parsing the item name (e.g. "Wood Planks") into the qualified image name (e.g. "wood_planks")
 		{
 			String imageName = ItemDataManager.getImageFilename(grid.ul);
-			imageUL.setImageResource(getResources().getIdentifier(imageName, "drawable", "com.example.minecraftapp"));
+			resId = getResourceId(this, imageName);
+			imageUL.setImageResource(resId);
 		}
 		if (grid.uc != null)
 		{
 			String imageName = ItemDataManager.getImageFilename(grid.uc);
-			imageUC.setImageResource(getResources().getIdentifier(imageName, "drawable", "com.example.minecraftapp"));
+			resId = getResourceId(this, imageName);
+			imageUC.setImageResource(resId);
 		}
 		if (grid.ur != null)
 		{
 			String imageName = ItemDataManager.getImageFilename(grid.ur);
-			imageUR.setImageResource(getResources().getIdentifier(imageName, "drawable", "com.example.minecraftapp"));
+			resId = getResourceId(this, imageName);
+			imageUR.setImageResource(resId);
 		}
 		if (grid.l != null)
 		{
 			String imageName = ItemDataManager.getImageFilename(grid.l);
-			imageL.setImageResource(getResources().getIdentifier(imageName, "drawable", "com.example.minecraftapp"));
+			resId = getResourceId(this, imageName);
+			imageL.setImageResource(resId);
 		}
 		if (grid.c != null)
 		{
 			String imageName = ItemDataManager.getImageFilename(grid.c);
-			imageC.setImageResource(getResources().getIdentifier(imageName, "drawable", "com.example.minecraftapp"));
+			resId = getResourceId(this, imageName);
+			imageC.setImageResource(resId);
 		}
 		if (grid.r != null)
 		{
 			String imageName = ItemDataManager.getImageFilename(grid.r);
-			imageR.setImageResource(getResources().getIdentifier(imageName, "drawable", "com.example.minecraftapp"));
+			resId = getResourceId(this, imageName);
+			imageR.setImageResource(resId);
 		}
 		if (grid.ll != null)
 		{
 			String imageName = ItemDataManager.getImageFilename(grid.ll);
-			imageLL.setImageResource(getResources().getIdentifier(imageName, "drawable", "com.example.minecraftapp"));
+			resId = getResourceId(this, imageName);
+			imageLL.setImageResource(resId);
 		}
 		if (grid.lc != null)
 		{
 			String imageName = ItemDataManager.getImageFilename(grid.lc);
-			imageLC.setImageResource(getResources().getIdentifier(imageName, "drawable", "com.example.minecraftapp"));
+			resId = getResourceId(this, imageName);
+			imageLC.setImageResource(resId);
 		}
 		if (grid.lr != null)
 		{
 			String imageName = ItemDataManager.getImageFilename(grid.lr);
-			imageLR.setImageResource(getResources().getIdentifier(imageName, "drawable", "com.example.minecraftapp"));
+			resId = getResourceId(this, imageName);
+			imageLR.setImageResource(resId);
 		}
 		
 		// Set up the back button
@@ -469,6 +466,12 @@ public class WorksheetActivity extends Activity
 		final AlertDialog dialog = b.setView(v).show();
 	}
 	
+	// Builds file name for an image
+	private int getResourceId(Context context, String id)
+	{
+		return context.getResources().getIdentifier(id, "drawable", context.getPackageName());
+	}
+	
 	// Called when the user hits the menu softkey
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu)
@@ -476,6 +479,26 @@ public class WorksheetActivity extends Activity
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.menu_items, menu);
 		return true;
+	}
+	
+	// Used to save the current list of items to file
+	private void saveItemsToFile()
+	{
+		// Build a list of lines to write to file
+		// A line is formatted as: <name of item>-<quantity of item>-<level of item>
+		// File manager takes care of end-of-line characters
+		List <String> linesToWrite = new ArrayList<String>();
+		for (int i = 0; i < itemList.size(); i++)
+		{
+			Ingredient thisIngredient = itemList.get(i);
+			String thisName = thisIngredient.name;
+			String thisQuantity = thisIngredient.quantity;
+			int thisLevel = thisIngredient.level;
+			linesToWrite.add(thisName + "-" + thisQuantity + "-" + thisLevel);
+		}
+		
+		// Commit changes
+		fileManager.writeLinesToFile(linesToWrite, name, fileManager.WORKSHEET_DATA_DIRECTORY);
 	}
 
 	// Handle menu items being clicked
@@ -506,6 +529,30 @@ public class WorksheetActivity extends Activity
 		default:
 			return super.onOptionsItemSelected(item); 
 		}
+	}
+	
+	// Shows the user the actions they can perform to add and modify items within a worksheet
+	// Only appears once
+	private void showWelcomeDialog()
+	{
+		// Set up and show a new alert dialog
+		AlertDialog.Builder b = new AlertDialog.Builder(this);
+		View v = LayoutInflater.from(this).inflate(R.layout.dialog_worksheet_activity_initial, (ViewGroup)findViewById(R.id.dialog_worksheet_activity_initial_root));
+		b.setView(v);
+		b.setTitle(R.string.worksheet_activity_welcome_title);
+
+		// Set up the button to close the dialog
+		b.setPositiveButton(R.string.got_it, new DialogInterface.OnClickListener()
+		{
+			public void onClick(DialogInterface dialog, int which)
+			{
+				// Close the dialog
+				dialog.dismiss();
+			}
+		});
+
+		// Show finished result
+		b.show();
 	}
 	
 }

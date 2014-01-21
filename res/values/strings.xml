@@ -35,5 +35,10 @@
     <string name="subtitle_worksheet_list">Worksheet List</string>
     <string name="menu_delete_selected_items">Delete Selected Items</string>
     <string name="show_recipe_button_des">Show Recipe Button</string>
-
+    <string name="main_activity_welcome_message">This screen displays your worksheets, which hold your lists of items.\n\n * Use the \'+\' icon on the action bar to add a new worksheet\n * Tap on a worksheet to view and manage its items\n * Long-press on a worksheet to delete it</string>
+	<string name="main_activity_welcome_title">Welcome to MineButler!</string>
+    <string name="got_it">Got it!</string>
+    <string name="worksheet_activity_welcome_message">This screen displays the contents of one worksheet. The title of the worksheet is displayed below the action bar.\n\n * Use the \'+\' icon on the action bar to add an item\n * Tap the tab on the left side of any added item to show its ingredients\n * Tap any open item\'s tab to hide its ingredients\n * Tap the grid icon on any item that has ingredients to show its recipe\n * Tap the A-Z icon to sort the items alphabetically\n * Long-press on any item to begin selecting items to delete</string>
+	<string name="worksheet_activity_welcome_title">Worksheet Screen Overview</string>
+    
 </resources>

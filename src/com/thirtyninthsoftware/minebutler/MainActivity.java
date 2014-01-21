@@ -5,7 +5,7 @@
  * 
  */
 
-package com.example.minecraftapp;
+package com.thirtyninthsoftware.minebutler;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,6 +14,8 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.xmlpull.v1.XmlPullParserException;
+
+import com.thirtyninthsoftware.minebutler.R;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -44,6 +46,7 @@ public class MainActivity extends Activity
 	FileManager fileManager;
 	public static String[] itemNamesList;
 	ErrorLogManager ELog;
+	public static final String FILE_SHARED_PREFERENCES = "PREFERENCES";
 
 	// Called when the activity receives a create intent
 	@Override
@@ -86,6 +89,17 @@ public class MainActivity extends Activity
 		// Set up error manager
 		ELog = new ErrorLogManager();
 		ELog.setContext(this);
+		
+		// See if we need to show the user the first time dialog explaining basic features
+		boolean initialRun = getSharedPreferences(FILE_SHARED_PREFERENCES, MODE_PRIVATE).getBoolean("initialRun", true);
+		if (initialRun)
+		{
+			// Show our dialog
+			showWelcomeDialog();
+			
+			// Don't show dialog again
+			getSharedPreferences(FILE_SHARED_PREFERENCES, MODE_PRIVATE).edit().putBoolean("initialRun", false).commit();
+		}
 	}
 	
 	// Called when the user hits submit button on search bar
@@ -262,6 +276,29 @@ public class MainActivity extends Activity
 		{
 			itemNamesList[count] = itemManager.itemList.get(count).name;
 		}
+	}
+	
+	// Displays a welcome message to users entering for the first time, explaining basic functions
+	private void showWelcomeDialog()
+	{
+		// Set up and show a new alert dialog
+		AlertDialog.Builder b = new AlertDialog.Builder(this);
+		View v = LayoutInflater.from(this).inflate(R.layout.dialog_main_activity_initial, (ViewGroup)findViewById(R.id.dialog_main_activity_initial_root));
+		b.setView(v);
+		b.setTitle(R.string.main_activity_welcome_title);
+
+		// Set up the button to close the dialog
+		b.setPositiveButton(R.string.got_it, new DialogInterface.OnClickListener()
+		{
+			public void onClick(DialogInterface dialog, int which)
+			{
+				// Close the dialog
+				dialog.dismiss();
+			}
+		});
+
+		// Show finished result
+		b.show();
 	}
 
 };

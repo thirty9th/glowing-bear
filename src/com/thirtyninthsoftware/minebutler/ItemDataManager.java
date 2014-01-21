@@ -6,7 +6,7 @@
  * 
  */
 
-package com.example.minecraftapp;
+package com.thirtyninthsoftware.minebutler;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,6 +16,8 @@ import java.util.Locale;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
+
+import com.thirtyninthsoftware.minebutler.R;
 
 import android.content.Context;
 import android.content.res.XmlResourceParser;
@@ -47,17 +49,44 @@ public class ItemDataManager
 	// Searches the list of crafting items for the target item, returning its index
 	public int searchItem(String itemName)
 	{
-		String thisName;
-		for (int i = 0; i < itemList.size(); i++)
+		return searchUtil(0, itemList.size() - 1, itemList, itemName);
+	}
+	
+	// Performs an efficient binary search on the list of crafting items
+	// Used frequently, so this needs to be fast
+	private int searchUtil(int low, int high, List<CraftingItem> list, String key)
+	{
+		int mid = (high + low) / 2;					// Integer arithmetic to get the mid point of the list
+		if (mid >= 0 && mid < list.size())			// Make sure we're in bounds
 		{
-			thisName = itemList.get(i).name;
-			if (thisName.equalsIgnoreCase(itemName))
+			String thisName = itemList.get(mid).name;	// For comparison
+			
+			// Base cases
+			if (low > high) return -1;
+			else if (low == high)
 			{
-				return i;
+				if (list.get(low).name.equals(key)) return low;
+				else return -1;
+			}
+			
+			// Recursion
+			if (key.compareTo(thisName) == 0)			// Found a match
+			{
+				return mid;
+			}
+			else if (key.compareTo(thisName) < 0)		// key is lexicographically less than the middle item's name
+			{
+				// Search again on the left (lower) half of the list
+				// NOTE: we have a sorted list to begin with, which makes binary searching work at all
+				return searchUtil(low, mid - 1, list, key);
+			}
+			else										// key is lexicographically greater than the middle item's name
+			{
+				// Search again on the left (upper) half of the list
+				return searchUtil(mid + 1, high, list, key);
 			}
 		}
-		
-		return -1;
+		else return -1;
 	}
 
 	// Loads item data, recipes etc. from res/xml/raw/item_data.xml
